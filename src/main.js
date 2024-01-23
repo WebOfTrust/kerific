@@ -13,20 +13,15 @@ import './assets/main.css'
      * CONFIGURATION
      */
 
-
     const glossaryJsonUrl = "https://weboftrust.github.io/WOT-terms/json/external-glosseries/glossaries-combined/all-glossaries.json";
 
     const versionNumberUrl = "https://weboftrust.github.io/kerific/manifest.json";
-
-
 
     /*
      * END CONFIGURATION
      */
 
-
     let popUpLedger = [];
-
 
     /*
      * Inject CSS
@@ -41,7 +36,6 @@ import './assets/main.css'
     /*
      * END Inject CSS
      */
-
 
     // In case the script runs multiple times on the same page, remove all previous popups and highlights
     // Remove all elements with class="kerific-popup" and class="kerific-term-highlight"
@@ -85,7 +79,6 @@ import './assets/main.css'
     // const stringWithLinks = '<p>This is a <a href="https://example.com">link</a> in a string.</p>';
     // const stringWithoutLinks = removeLinks(stringWithLinks);
     // console.log(stringWithoutLinks); // Output: <p>This is a link in a string.</p>
-
 
     // Combine JSON objects with identical properties.
     function combineJSONObjects(jsonArray, propertyToCombineBy) {
@@ -471,7 +464,6 @@ import './assets/main.css'
 
     } // End function handleMatch()
 
-
     // The pattern looks for the occurrence of the word "See" followed by an optional colon and space, then a link enclosed in <a> tags. It captures the text inside the <a> tags and returns it as the result. If there is no match, it returns null.
     function findLinkTextAfterSee(str) {
         const pattern = /See\s?:? ?<.*?<a.*?>(.*?)<\/a>/is;
@@ -480,5 +472,4 @@ import './assets/main.css'
     }
     // // Example usage:
     // const exampleString = 'Random text See <a href="link.html">Link Text</a> more text';
-
 })();
