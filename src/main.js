@@ -16,7 +16,9 @@ import './assets/main.css'
 
     const glossaryJsonUrl = "https://weboftrust.github.io/WOT-terms/json/external-glosseries/glossaries-combined/all-glossaries.json";
 
-    const versionNumberUrl = "https://weboftrust.github.io/WOT-terms/js/kerific/manifest.json";
+    const versionNumberUrl = "https://weboftrust.github.io/kerific/manifest.json";
+
+
 
     /*
      * END CONFIGURATION
