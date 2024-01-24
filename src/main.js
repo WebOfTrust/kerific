@@ -1,17 +1,6 @@
 import interact from "interactjs";
 import './assets/main.css'
 
-import * as localStorageUtil from './modules/localStorageUtil';
-
-// Usage
-localStorageUtil.setItem('key', { data: 'kerific test' });
-const value = localStorageUtil.getItem('key');
-console.log('value: ', value);
-
-
-
-
-
 /* 
     Use Immediately Invoked Function Expressions(IIFE): Wrap your entire code in an IIFE.This creates a new scope each time the script is run, preventing variable and function redeclarations. This is a common pattern for bookmarklets and scripts injected into pages:
 
