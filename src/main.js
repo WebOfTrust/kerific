@@ -4,11 +4,7 @@ import './assets/main.css'
 import * as localStorageUtil from './modules/localStorageUtil';
 
 /* 
-    Use Immediately Invoked Function Expressions(IIFE): Wrap your entire code in an IIFE.This creates a new scope each time the script is run, preventing variable and function redeclarations. This is a common pattern for bookmarklets and scripts injected into pages:
-
-    (function () {
-        // Your code here
-    })();
+    Use Immediately Invoked Function Expressions(IIFE): Wrap your entire code in an IIFE.This creates a new scope each time the script is run, preventing variable and function redeclarations. This is a common pattern for bookmarklets and scripts injected into pages.
 */
 (function () {
     /*
