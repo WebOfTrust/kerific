@@ -11,7 +11,7 @@ chrome.action.onClicked.addListener((tab) => {
 chrome.runtime.onInstalled.addListener(function () {
     chrome.contextMenus.create({
         id: "myContextMenu",
-        title: "Info WOT-terms",
+        title: "Info Kerific",
         contexts: ["browser_action"]  // Use "browser_action" for toolbar icon
     });
 });
