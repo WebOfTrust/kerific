@@ -281,34 +281,36 @@ import * as localStorageUtil from './modules/localStorageUtil';
                     // document.querySelector('.' + uniqueClass).style.display = 'block';
 
 
-                    iziToast.show({
-                        theme: 'light',
-                        icon: 'icon-person',
-                        title: 'Hey',
-                        message: 'Welcome keri!',
-                        position: 'topRight', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
-                        progressBarColor: 'rgb(0, 255, 184)',
-                        timeout: 50000,
-                        buttons: [
-                            ['<button>Ok</button>', function (instance, toast) {
-                                alert("Hello world!");
-                            }, true], // true to focus
-                            ['<button>Close</button>', function (instance, toast) {
-                                instance.hide({
-                                    transitionOut: 'fadeOutUp',
-                                    onClosing: function (instance, toast, closedBy) {
-                                        console.info('closedBy: ' + closedBy); // The return will be: 'closedBy: buttonName'
-                                    }
-                                }, toast, 'buttonName');
-                            }]
-                        ],
-                        onOpening: function (instance, toast) {
-                            console.info('callback abriu!');
-                        },
-                        onClosing: function (instance, toast, closedBy) {
-                            console.info('closedBy: ' + closedBy); // tells if it was closed by 'drag' or 'button'
-                        }
-                    });
+                    // // https://izitoast.marcelodolza.com/#Options
+                    // // To be implemented
+                    // iziToast.show({
+                    //     theme: 'light',
+                    //     icon: 'icon-person',
+                    //     title: 'Hey',
+                    //     message: 'Welcome keri!',
+                    //     position: 'topRight', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
+                    //     progressBarColor: 'rgb(0, 255, 184)',
+                    //     timeout: 50000,
+                    //     buttons: [
+                    //         ['<button>Ok</button>', function (instance, toast) {
+                    //             alert("Hello world!");
+                    //         }, true], // true to focus
+                    //         ['<button>Close</button>', function (instance, toast) {
+                    //             instance.hide({
+                    //                 transitionOut: 'fadeOutUp',
+                    //                 onClosing: function (instance, toast, closedBy) {
+                    //                     console.info('closedBy: ' + closedBy); // The return will be: 'closedBy: buttonName'
+                    //                 }
+                    //             }, toast, 'buttonName');
+                    //         }]
+                    //     ],
+                    //     onOpening: function (instance, toast) {
+                    //         console.info('callback abriu!');
+                    //     },
+                    //     onClosing: function (instance, toast, closedBy) {
+                    //         console.info('closedBy: ' + closedBy); // tells if it was closed by 'drag' or 'button'
+                    //     }
+                    // });
                 }
             });
 
