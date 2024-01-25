@@ -346,7 +346,7 @@ import * as localStorageUtil from './modules/localStorageUtil';
                 }
             });
 
-            // Draggable configuration
+            // Make popups draggable
             interact('.kerific-popup').draggable({
                 listeners: {
                     move(event) {
@@ -371,6 +371,7 @@ import * as localStorageUtil from './modules/localStorageUtil';
                 }
             });
 
+            // Make popups resizable
             interact('.kerific-popup')
                 .resizable({
                     edges: { top: true, left: true, bottom: true, right: true },
