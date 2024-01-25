@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "interactjs": "^1.10.26",
+    "izitoast": "^1.4.0",
     "vue": "^3.3.11"
   },
   "devDependencies": {
