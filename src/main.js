@@ -314,6 +314,14 @@ import * as localStorageUtil from './modules/localStorageUtil';
                 }
             });
 
+            // Event delegation for save buttons in popups
+            document.body.addEventListener('click', function (event) {
+                if (event.target.classList.contains('kerific-save') && event.target.tagName === 'BUTTON') {
+                    saveTextOfThisPopup(event.target)
+                }
+            });
+
+
             // Event delegation for closing popups
             document.body.addEventListener('click', function (event) {
                 if (event.target.classList.contains('close-cross')) {
@@ -452,6 +460,7 @@ import * as localStorageUtil from './modules/localStorageUtil';
 
                             glossaryPopupBodyContent += `
                                 <h3>${counter}: ${glossaryEntryDefinitionsEntry.organisation}</h3>
+                                <button class="kerific-save">Save</button>
                                 <div class="definition-block">${removeLinks(glossaryEntryDefinitionsEntry.definition)}</div>
                                 <hr>
                             `;
@@ -505,4 +514,40 @@ import * as localStorageUtil from './modules/localStorageUtil';
     }
     // // Example usage:
     // const exampleString = 'Random text See <a href="link.html">Link Text</a> more text';
+
+
+    // Save button in popup
+    function saveTextOfThisPopup(el) {
+        chrome.runtime.sendMessage({
+            action: "addTerm",
+            kerificTerms: el.closest(".card-body").previousElementSibling.querySelector(".animate__animated").innerText
+        }, function (response) {
+            console.log("Response:", response);
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+        // Options page, log button
+        var logButton = document.getElementById('logButton');
+        logButton.addEventListener('click', function () {
+            chrome.storage.local.get(['kerificTerms'], function (result) {
+                console.log('result: ', result);
+                // if (result.kerificTerms) {
+                //     console.log('Value currently is ' + result.kerificTerms);
+                // } else {
+                //     console.log('kerificTerms not found');
+                // }
+            });
+        });
+
+        // Options page, clear button
+        var clearButton = document.getElementById('clearButton');
+        clearButton.addEventListener('click', function () {
+            chrome.runtime.sendMessage({ action: "clearStorage" }, function (response) {
+                console.log("Response:", response);
+            });
+        });
+
+    });
 })();
