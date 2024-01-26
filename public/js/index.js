@@ -3,9 +3,9 @@
 // Options page, log button
 var logButton = document.getElementById('logButton');
 logButton.addEventListener('click', function () {
-    console.log("loglog");
     chrome.storage.local.get(['kerificTerms'], function (result) {
         console.log('result: ', result);
+        loadCollections();
         // if (result.kerificTerms) {
         //     console.log('Value currently is ' + result.kerificTerms);
         // } else {
