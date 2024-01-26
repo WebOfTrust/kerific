@@ -520,7 +520,12 @@ import * as localStorageUtil from './modules/localStorageUtil';
     function saveTextOfThisPopup(el) {
         chrome.runtime.sendMessage({
             action: "addTerm",
-            kerificTerms: el.closest(".card-body").previousElementSibling.querySelector(".animate__animated").innerText
+
+            entry: {
+                "term": el.closest(".card-body").previousElementSibling.querySelector(".animate__animated").innerText,
+                "definition": el.closest(".card-body").querySelector(".definition-block").innerText
+            }
+
         }, function (response) {
             console.log("Response:", response);
         });
