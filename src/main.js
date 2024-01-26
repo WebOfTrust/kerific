@@ -275,7 +275,7 @@ import './assets/main.css'
                     uniqueClass = 'kerific-popup-' + uniquId;
                     document.querySelector('.' + uniqueClass).classList.remove('displayNone');
                     document.querySelector('.' + uniqueClass).classList.add('displayBlock');
-                    document.querySelector('.' + uniqueClass + ' h2').classList.add('animate__pulse');
+                    document.querySelector('.' + uniqueClass).classList.add('animate__pulse');
                     // document.querySelector('.' + uniqueClass).style.display = 'block';
                 }
             });
@@ -389,7 +389,7 @@ import './assets/main.css'
         allKerificButtons.forEach(kerificButton => {
             const kerificButtonText = kerificButton.innerText;
             const kerificButtonTextLowercase = kerificButton.innerText.toLowerCase();
-            let glossaryPopupHeaderContent = `<h2 class='popup-definition animate__animated'>“${kerificButtonText}”</h2>`;
+            let glossaryPopupHeaderContent = `<h2 class='popup-definition'>“${kerificButtonText}”</h2>`;
             let glossaryPopupBodyContent = ``;
 
             // Go through all terms in the glossary
@@ -459,7 +459,7 @@ import './assets/main.css'
 
             let glossaryPopup = document.createElement('div');
             glossaryPopup.innerHTML = glossaryPopupContent;
-            glossaryPopup.classList.add('kerific-popup', uniqueClass, 'card', 'p-0');
+            glossaryPopup.classList.add('kerific-popup', uniqueClass, 'card', 'p-0', 'animate__animated');
 
             // some styling needs to be done inline to get enough specificity
             glossaryPopup.style.cssText = 'display: none; position: fixed !important;top: 10px;left: calc(100vw - 25% - 1em);';
