@@ -18,7 +18,8 @@
     "permissions": [
         "scripting",
         "activeTab",
-        "contextMenus"
+        "contextMenus",
+        "storage"
     ],
     "commands": {
         "_execute_action": {
