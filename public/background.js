@@ -25,22 +25,28 @@ chrome.contextMenus.onClicked.addListener(function (info, tab) {
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (request.action === "addTerm") {
-        // Retrieve data using Chrome Storage API
+
+        // Retrieve the existing data
         chrome.storage.local.get('kerificTerms', function (result) {
-            // 'result' is an object with keys as the stored keys
-            let existingData = result.kerificTerms || ""; // If no data, default to empty string
-            let newData = existingData + "\n" + request.kerificTerms;
+            let existingData = result.kerificTerms || { "terms": [] };
+
+            // Add the new term and definition
+            existingData.terms.push({
+                "term": request.entry.term,
+                "definition": request.entry.definition
+            });
 
             // Store the updated data
-            chrome.storage.local.set({ kerificTerms: newData }, function () {
-                console.log('Data is stored.');
+            chrome.storage.local.set({ 'kerificTerms': existingData }, function () {
+                console.log('Data is updated.');
             });
 
             // Send a response back
-            sendResponse({ response: "Data received" });
+            sendResponse({ response: "Term and definition added" });
         });
-        return true; // For asynchronous response
 
+        // Keep the message channel open for asynchronous response
+        return true;
 
     } else if (request.action === "clearStorage") {
         // Handle clearing storage
