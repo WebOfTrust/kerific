@@ -9,9 +9,20 @@ function loadCollections() {
             for (let i = 0; i < terms.length; i++) {
                 // loop through kerificTerms.terms.term and kerificTerms.terms.definition
                 // create a list item for each
-                domString += `<h2>${terms[i].term}</h2>`;
-                domString += `${terms[i].definition}`;
-                domString += `<p>${terms[i].organisation}</p>`;
+
+                domString += `
+                <div class="card mb-5">
+                    <div class="card-body">
+                        <h2>${terms[i].term}</h2>
+                        <p class="card-text">
+                        ${terms[i].definition}
+                        </p>
+                        <p class="card-text">
+                        This definition comes from: ${terms[i].organisation}
+                        </p>
+                    </div>
+                </div>
+                `;
             }
         }
         document.getElementById('container-collection').innerHTML = domString;
