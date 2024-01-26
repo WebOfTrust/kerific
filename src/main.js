@@ -414,6 +414,7 @@ import './assets/main.css'
                                             glossaryPopupBodyContent += `
                                                 <h3>${counter}: ${eachDefinitions2.organisation}</h3>
                                                 <small>Redirected to: “<strong>${combinedGlossariesEntry2.term}</strong>”:</small>
+                                                <button class="kerific-save">Save</button>
                                                 <div class="definition-block">${removeLinks(eachDefinitions2.definition)}</div>
                                                 <hr>
                                             `;
