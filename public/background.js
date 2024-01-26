@@ -33,7 +33,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             // Add the new term and definition
             existingData.terms.push({
                 "term": request.entry.term,
-                "definition": request.entry.definition
+                "definition": request.entry.definition,
+                "organisation": request.entry.organisation
             });
 
             // Store the updated data
