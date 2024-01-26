@@ -3686,7 +3686,7 @@ const iziToast = /* @__PURE__ */ getDefaultExportFromCjs(iziToastExports);
     allKerificButtons.forEach((kerificButton) => {
       const kerificButtonText = kerificButton.innerText;
       const kerificButtonTextLowercase = kerificButton.innerText.toLowerCase();
-      let glossaryPopupHeaderContent = `<h2 class='animate__animated'>“${kerificButtonText}”</h2>`;
+      let glossaryPopupHeaderContent = `<h2 class='popup-definition animate__animated'>“${kerificButtonText}”</h2>`;
       let glossaryPopupBodyContent = ``;
       combinedGlossaries.forEach((combinedGlossariesEntry) => {
         if (kerificButtonTextLowercase === combinedGlossariesEntry.termToLowerCase && !popUpLedger.includes(kerificButtonTextLowercase)) {
@@ -3699,8 +3699,9 @@ const iziToast = /* @__PURE__ */ getDefaultExportFromCjs(iziToastExports);
                     if (eachDefinitions2.organisation === glossaryEntryDefinitionsEntry.organisation) {
                       counter++;
                       glossaryPopupBodyContent += `
-                                                <h3>${counter}: ${eachDefinitions2.organisation}</h3>
+                                                <h3>${counter}: <span class="popup-organisation">${eachDefinitions2.organisation}</span></h3>
                                                 <small>Redirected to: “<strong>${combinedGlossariesEntry2.term}</strong>”:</small>
+                                                <button class="kerific-save">Save</button>
                                                 <div class="definition-block">${removeLinks(eachDefinitions2.definition)}</div>
                                                 <hr>
                                             `;
@@ -3711,7 +3712,7 @@ const iziToast = /* @__PURE__ */ getDefaultExportFromCjs(iziToastExports);
             } else {
               counter++;
               glossaryPopupBodyContent += `
-                                <h3>${counter}: ${glossaryEntryDefinitionsEntry.organisation}</h3>
+                                <h3>${counter}: <span class="popup-organisation">${glossaryEntryDefinitionsEntry.organisation}</span></h3>
                                 <button class="kerific-save">Save</button>
                                 <div class="definition-block">${removeLinks(glossaryEntryDefinitionsEntry.definition)}</div>
                                 <hr>
@@ -3753,9 +3754,9 @@ const iziToast = /* @__PURE__ */ getDefaultExportFromCjs(iziToastExports);
     chrome.runtime.sendMessage({
       action: "addTerm",
       entry: {
-        "term": el.closest(".card-body").previousElementSibling.querySelector(".animate__animated").innerText,
+        "term": el.closest(".card-body").previousElementSibling.querySelector(".popup-definition").innerText,
         "definition": el.closest(".card-body").querySelector(".definition-block").innerHTML,
-        "organisation": el.closest(".card-body").querySelector("h3").innerText
+        "organisation": el.closest(".card-body").querySelector(".popup-organisation").innerText
       }
     }, function(response) {
       console.log("Response:", response);
