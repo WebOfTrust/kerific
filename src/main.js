@@ -275,7 +275,7 @@ import './assets/main.css'
                     uniqueClass = 'kerific-popup-' + uniquId;
                     document.querySelector('.' + uniqueClass).classList.remove('displayNone');
                     document.querySelector('.' + uniqueClass).classList.add('displayBlock');
-                    document.querySelector('.' + uniqueClass).classList.add('animate__pulse');
+                    document.querySelector('.' + uniqueClass).classList.add('animate__fadeIn');
                     // document.querySelector('.' + uniqueClass).style.display = 'block';
                 }
             });
