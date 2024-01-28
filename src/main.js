@@ -512,7 +512,7 @@ import './assets/main.css'
                 position: 'topRight', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
                 progressBarColor: 'rgb(0, 255, 184)',
                 maxWidth: '25%',
-                timeout: 5000,
+                timeout: 10000,
                 // buttons: [
                 //     ['<button>Ok</button>', function (instance, toast) {
                 //         alert("Hello world!");
