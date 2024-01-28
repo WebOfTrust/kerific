@@ -1,6 +1,6 @@
 // document.addEventListener('DOMContentLoaded', function () {
 
-// Options page, log button
+// Log button
 var logButton = document.getElementById('logButton');
 logButton.addEventListener('click', function () {
     chrome.storage.local.get(['kerificTerms'], function (result) {
@@ -14,7 +14,7 @@ logButton.addEventListener('click', function () {
     });
 });
 
-// Options page, clear button
+// Clear button
 var clearButton = document.getElementById('clearButton');
 clearButton.addEventListener('click', function () {
     chrome.runtime.sendMessage({ action: "clearStorage" }, function (response) {
