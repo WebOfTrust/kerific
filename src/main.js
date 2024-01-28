@@ -503,7 +503,6 @@ import './assets/main.css'
             }
 
             // https://izitoast.marcelodolza.com/#Options
-            // To be implemented
             iziToast.show({
                 theme: 'light',
                 icon: 'icon-person',
