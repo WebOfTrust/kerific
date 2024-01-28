@@ -3751,6 +3751,7 @@ const iziToast = /* @__PURE__ */ getDefaultExportFromCjs(iziToastExports);
     return match ? match[1] : null;
   }
   function saveTextOfThisPopup(el) {
+    let userInform = "";
     chrome.runtime.sendMessage({
       action: "addTerm",
       entry: {
@@ -3760,35 +3761,41 @@ const iziToast = /* @__PURE__ */ getDefaultExportFromCjs(iziToastExports);
       }
     }, function(response) {
       console.log("Response:", response);
-    });
-    iziToast.show({
-      theme: "light",
-      icon: "icon-person",
-      title: "Hey",
-      message: `<p>Definition saved! To see your collections go to the options of the Kerific extension (right-click on the icon).</p>`,
-      position: "topRight",
-      // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
-      progressBarColor: "rgb(0, 255, 184)",
-      timeout: 5e3,
-      // buttons: [
-      //     ['<button>Ok</button>', function (instance, toast) {
-      //         alert("Hello world!");
-      //     }, true], // true to focus
-      //     ['<button>Close</button>', function (instance, toast) {
-      //         instance.hide({
-      //             transitionOut: 'fadeOutUp',
-      //             onClosing: function (instance, toast, closedBy) {
-      //                 console.info('closedBy: ' + closedBy); // The return will be: 'closedBy: buttonName'
-      //             }
-      //         }, toast, 'buttonName');
-      //     }]
-      // ],
-      onOpening: function(instance, toast) {
-        console.info("callback abriu!");
-      },
-      onClosing: function(instance, toast, closedBy) {
-        console.info("closedBy: " + closedBy);
+      if (response.response === "termAdded") {
+        userInform = "Term and definition added";
+      } else if (response.response === "termNotAdded") {
+        userInform = "Term and definition not added. It is already in your collection.";
       }
+      iziToast.show({
+        theme: "light",
+        icon: "icon-person",
+        title: "Hey",
+        message: `<p>${userInform}. To see your collections go to the options of the Kerific extension (right-click on the icon).</p>`,
+        position: "topRight",
+        // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
+        progressBarColor: "rgb(0, 255, 184)",
+        maxWidth: "25%",
+        timeout: 5e3,
+        // buttons: [
+        //     ['<button>Ok</button>', function (instance, toast) {
+        //         alert("Hello world!");
+        //     }, true], // true to focus
+        //     ['<button>Close</button>', function (instance, toast) {
+        //         instance.hide({
+        //             transitionOut: 'fadeOutUp',
+        //             onClosing: function (instance, toast, closedBy) {
+        //                 console.info('closedBy: ' + closedBy); // The return will be: 'closedBy: buttonName'
+        //             }
+        //         }, toast, 'buttonName');
+        //     }]
+        // ],
+        onOpening: function(instance, toast) {
+          console.info("callback abriu!");
+        },
+        onClosing: function(instance, toast, closedBy) {
+          console.info("closedBy: " + closedBy);
+        }
+      });
     });
   }
 })();

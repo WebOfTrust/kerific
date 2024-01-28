@@ -30,20 +30,27 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         chrome.storage.local.get('kerificTerms', function (result) {
             let existingData = result.kerificTerms || { "terms": [] };
 
-            // Add the new term and definition
-            existingData.terms.push({
-                "term": request.entry.term,
-                "definition": request.entry.definition,
-                "organisation": request.entry.organisation
-            });
+            // Check if the term is already in the collection…
+            if (existingData.terms.some(obj => obj.term === request.entry.term) === false) {
+                // … if not, add the new term and definition
+                existingData.terms.push({
+                    "term": request.entry.term,
+                    "definition": request.entry.definition,
+                    "organisation": request.entry.organisation
+                });
 
-            // Store the updated data
-            chrome.storage.local.set({ 'kerificTerms': existingData }, function () {
-                console.log('Data is updated.');
-            });
+                // Store the updated data
+                chrome.storage.local.set({ 'kerificTerms': existingData }, function () {
+                    console.log('Data is updated.');
+                });
 
-            // Send a response back
-            sendResponse({ response: "Term and definition added" });
+                // Send a response back
+                // sendResponse({ response: "Term and definition added" });
+                sendResponse({ response: "termAdded" });
+            } else {
+                // … if so, send a response back without adding the term
+                sendResponse({ response: "termNotAdded" });
+            }
         });
 
         // Keep the message channel open for asynchronous response
