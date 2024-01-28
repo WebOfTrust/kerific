@@ -510,7 +510,7 @@ import './assets/main.css'
                 title: 'Hey',
                 message: `<p>${userInform}. To see your collections go to the options of the Kerific extension (right-click on the icon).</p>`,
                 position: 'topRight', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
-                progressBarColor: 'rgb(0, 255, 184)',
+                progressBarColor: 'rgb(91 175 255)',
                 maxWidth: '25%',
                 timeout: 10000,
                 // buttons: [
