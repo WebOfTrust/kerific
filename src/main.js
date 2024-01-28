@@ -485,6 +485,7 @@ import './assets/main.css'
 
     // Save button in popup
     function saveTextOfThisPopup(el) {
+        let userInform = '';
         chrome.runtime.sendMessage({
             action: "addTerm",
 
@@ -493,40 +494,46 @@ import './assets/main.css'
                 "definition": el.closest(".card-body").querySelector(".definition-block").innerHTML,
                 "organisation": el.closest(".card-body").querySelector(".popup-organisation").innerText,
             }
-
         }, function (response) {
             console.log("Response:", response);
+            if (response.response === "termAdded") {
+                userInform = 'Term and definition added';
+            } else if (response.response === "termNotAdded") {
+                userInform = 'Term and definition not added. It is already in your collection.';
+            }
+
+            // https://izitoast.marcelodolza.com/#Options
+            // To be implemented
+            iziToast.show({
+                theme: 'light',
+                icon: 'icon-person',
+                title: 'Hey',
+                message: `<p>${userInform}. To see your collections go to the options of the Kerific extension (right-click on the icon).</p>`,
+                position: 'topRight', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
+                progressBarColor: 'rgb(0, 255, 184)',
+                timeout: 5000,
+                // buttons: [
+                //     ['<button>Ok</button>', function (instance, toast) {
+                //         alert("Hello world!");
+                //     }, true], // true to focus
+                //     ['<button>Close</button>', function (instance, toast) {
+                //         instance.hide({
+                //             transitionOut: 'fadeOutUp',
+                //             onClosing: function (instance, toast, closedBy) {
+                //                 console.info('closedBy: ' + closedBy); // The return will be: 'closedBy: buttonName'
+                //             }
+                //         }, toast, 'buttonName');
+                //     }]
+                // ],
+                onOpening: function (instance, toast) {
+                    console.info('callback abriu!');
+                },
+                onClosing: function (instance, toast, closedBy) {
+                    console.info('closedBy: ' + closedBy); // tells if it was closed by 'drag' or 'button'
+                }
+            });
         });
 
-        // https://izitoast.marcelodolza.com/#Options
-        // To be implemented
-        iziToast.show({
-            theme: 'light',
-            icon: 'icon-person',
-            title: 'Hey',
-            message: `<p>Definition saved! To see your collections go to the options of the Kerific extension (right-click on the icon).</p>`,
-            position: 'topRight', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
-            progressBarColor: 'rgb(0, 255, 184)',
-            timeout: 5000,
-            // buttons: [
-            //     ['<button>Ok</button>', function (instance, toast) {
-            //         alert("Hello world!");
-            //     }, true], // true to focus
-            //     ['<button>Close</button>', function (instance, toast) {
-            //         instance.hide({
-            //             transitionOut: 'fadeOutUp',
-            //             onClosing: function (instance, toast, closedBy) {
-            //                 console.info('closedBy: ' + closedBy); // The return will be: 'closedBy: buttonName'
-            //             }
-            //         }, toast, 'buttonName');
-            //     }]
-            // ],
-            onOpening: function (instance, toast) {
-                console.info('callback abriu!');
-            },
-            onClosing: function (instance, toast, closedBy) {
-                console.info('closedBy: ' + closedBy); // tells if it was closed by 'drag' or 'button'
-            }
-        });
+
     }
 })();
