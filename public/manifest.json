@@ -35,7 +35,8 @@
                 "*://*/*"
             ],
             "css": [
-                "assets/index.css"
+                "assets/index.css",
+                "css/izitoast/izitoast.min.css"
             ]
         }
     ]
