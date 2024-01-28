@@ -60,6 +60,12 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             }
         });
         return true; // For asynchronous response
+    } else if (request.action === "setRole") {
+        sendResponse({ response: "dit is wat ik stuurde" + request.role });
+
+        chrome.storage.local.set({ 'role': request.role }, function (result) {
+            console.log();
+        });
     }
 
     // Return true for asynchronous response, if needed
