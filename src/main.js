@@ -511,6 +511,7 @@ import './assets/main.css'
                 message: `<p>${userInform}. To see your collections go to the options of the Kerific extension (right-click on the icon).</p>`,
                 position: 'topRight', // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
                 progressBarColor: 'rgb(0, 255, 184)',
+                maxWidth: '25%',
                 timeout: 5000,
                 // buttons: [
                 //     ['<button>Ok</button>', function (instance, toast) {
