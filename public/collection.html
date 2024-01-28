@@ -9,18 +9,43 @@
     <link rel="stylesheet" href="assets/index.css">
 </head>
 
-<body class="m-5">
-    <div class="m-5">
-        <a class="btn btn-outline-dark" href="options.html">Go to options</a>
-        <button class="btn btn-outline-dark" id="logButton">Show collection</button>
-        <button class="btn btn-outline-dark" id="clearButton">Clear collection</button>
+<body class="m-5 mx-auto" style="max-width: 60em;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light mb-5">
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="navbar-nav">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="options.html">Options</a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="collection.html">Collection</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="info.html">Info</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <button class="btn btn-outline-dark me-3" id="logButton">Show collection</button>
+                    <button class="btn btn-outline-dark" id="clearButton">Clear collection</button>
+                </nav>
+                <div class="jumbotron">
+                    <h1><img src="images/icon48.png" alt="Kerific logo" class="logo me-5">Kerific collection</h1>
+                    <p>
+                        Collection.
+                    </p>
+                    <!-- <p>
+                                                        <a class="btn btn-primary btn-large" href="#">Learn more</a>
+                                                    </p> -->
+                </div>
+
+            </div>
+
+            <h1 class="mb-3">Your collected definitions</h1>
+            <div id="container-collection"></div>
+        </div>
     </div>
-
-
-    <h1 class="mb-3">Your collected definitions</h1>
-    <div id="container-collection"></div>
-
-
 </body>
 <!-- <script src="assets/index.js"></script> -->
 <script src="js/index.js"></script>
