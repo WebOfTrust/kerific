@@ -3770,12 +3770,12 @@ const iziToast = /* @__PURE__ */ getDefaultExportFromCjs(iziToastExports);
         theme: "light",
         icon: "icon-person",
         title: "Hey",
-        message: `<p>${userInform}. To see your collections go to the options of the Kerific extension (right-click on the icon).</p>`,
+        message: `<p><strong>${userInform}</strong>. To see your collections go to the options of the Kerific extension (right-click on the icon).</p>`,
         position: "topRight",
         // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
-        progressBarColor: "rgb(0, 255, 184)",
+        progressBarColor: "rgb(91 175 255)",
         maxWidth: "25%",
-        timeout: 5e3,
+        timeout: 1e4,
         // buttons: [
         //     ['<button>Ok</button>', function (instance, toast) {
         //         alert("Hello world!");
