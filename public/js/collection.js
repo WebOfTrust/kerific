@@ -66,10 +66,15 @@ logButton.addEventListener('click', function () {
     });
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+    loadCollections();
+});
+
 // Clear button
 var clearButton = document.getElementById('clearButton');
 clearButton.addEventListener('click', function () {
     chrome.runtime.sendMessage({ action: "clearStorage" }, function (response) {
         console.log("Response:", response);
+        loadCollections();
     });
 });
