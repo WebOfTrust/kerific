@@ -32,6 +32,24 @@ function loadCollections() {
         }
         document.getElementById('container-collection').innerHTML = domString;
     });
+
+    chrome.storage.local.get(['role'], function (result) {
+        let domStringRole = '';
+
+        switch (result.role) {
+            case 'decisionmaker':
+                domStringRole = 'Your role: Decision maker';
+                break;
+            case 'normaluser':
+                domStringRole = 'Your role: Normal user';
+                break;
+            default:
+                domStringRole = 'No role found';
+                break;
+        }
+
+        document.getElementById('container-role').innerHTML = domStringRole;
+    });
 }
 
 // Log button
