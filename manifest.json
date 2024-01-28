@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "Kerific",
     "description": "Kerific, load Keri-related glossaries",
-    "version": "1.4",
+    "version": "1.5",
     "background": {
         "service_worker": "./background.js"
     },
@@ -35,7 +35,8 @@
                 "*://*/*"
             ],
             "css": [
-                "assets/index.css"
+                "assets/index.css",
+                "css/izitoast/izitoast.min.css"
             ]
         }
     ]
