@@ -55,6 +55,33 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 
         // Keep the message channel open for asynchronous response
         return true;
+    } else if (request.action === "removeTerm") {
+        // Retrieve the existing data
+        chrome.storage.local.get('kerificTerms', function (result) {
+            let existingData = result.kerificTerms || { "terms": [] };
+
+            // Check if the term is in the collection…
+            if (existingData.terms.some(obj => obj.term === request.entry.term) === true) {
+                // … if so, remove entry
+                existingData.terms = existingData.terms.filter(function (obj) {
+                    return obj.term !== request.entry.term;
+                });
+
+                // Store the updated data
+                chrome.storage.local.set({ 'kerificTerms': existingData }, function () {
+                    console.log('Data is updated.');
+                });
+
+                // Send a response back
+                sendResponse({ response: "termRemoved" });
+            } else {
+                // … if not, send a response back that term is not found
+                sendResponse({ response: "termNotFound" });
+            }
+        });
+
+        // Keep the message channel open for asynchronous response
+        return true;
 
     } else if (request.action === "clearStorage") {
         // Handle clearing storage
