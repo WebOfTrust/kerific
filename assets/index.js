@@ -3769,7 +3769,7 @@ const iziToast = /* @__PURE__ */ getDefaultExportFromCjs(iziToastExports);
       iziToast.show({
         theme: "light",
         icon: "icon-person",
-        title: "Hey",
+        title: "Kerific info",
         message: `<p><strong>${userInform}</strong>. To see your collections go to the options of the Kerific extension (right-click on the icon).</p>`,
         position: "topRight",
         // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
