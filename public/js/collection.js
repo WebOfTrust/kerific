@@ -51,7 +51,7 @@ function loadCollections() {
             }
 
             domString += `
-            <h2>In Markdown-format:</h2>
+            <h2 id="markdownformat">In Markdown-format:</h2>
             <div id="markdown-container"></div>`;
         }
         document.getElementById('container-collection').innerHTML = domString;
@@ -71,19 +71,14 @@ function loadCollections() {
 
         const turndownService = new TurndownService()
         const markdown = turndownService.turndown(document.getElementById('container-collection-for-markdown'))
-        // console.log('markdown: ', markdown);
-
         const markdownContainer = document.getElementById('markdown-container');
         markdownContainer.innerHTML = `
-        <textarea rows="50" cols="33" class="form-control" id="markdown" rows="3">${markdown}</textarea>
+            <textarea rows="50" cols="33" class="form-control" id="markdown" rows="3">${markdown}</textarea>
         `;
 
         markdownContainer.addEventListener('click', function (e) {
-            console.log(e.target);
             e.target.select();
         });
-        // markdownContainer.select();
-
     });
 
     chrome.storage.local.get(['role'], function (result) {
