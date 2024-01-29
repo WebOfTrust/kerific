@@ -57,7 +57,7 @@ function loadCollections() {
         document.getElementById('container-collection').innerHTML = domString;
         document.getElementById('container-collection-for-markdown').innerHTML = domStringMarkdown;
 
-        var removeButtons = document.querySelectorAll('.remove-button');
+        const removeButtons = document.querySelectorAll('.remove-button');
         for (var i = 0; i < removeButtons.length; i++) {
             removeButtons[i].addEventListener('click', function () {
                 console.log('remove button clicked');
