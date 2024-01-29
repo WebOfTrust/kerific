@@ -1,9 +1,11 @@
 function loadCollections() {
     chrome.storage.local.get(['kerificTerms'], function (result) {
         let domString = '';
+        let domStringMarkdown = '';
 
         if (result.kerificTerms === undefined) {
             domString = '<p>No terms found</p>';
+            domStringMarkdown = '<p>No terms found</p>';
         } else {
             const terms = result.kerificTerms.terms;
             for (let i = 0; i < terms.length; i++) {
@@ -26,12 +28,34 @@ function loadCollections() {
                             This definition comes from: ${terms[i].organisation}
                         </p>
                     </div>
+                </div>
+                `;
 
+                domStringMarkdown += `
+                <div class="card mb-5">
+                    <div class="card-header">
+                        <h2>${terms[i].term}</h2>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                        ${terms[i].definition}
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <p class="card-text">
+                            This definition comes from: ${terms[i].organisation}
+                        </p>
+                    </div>
                 </div>
                 `;
             }
+
+            domString += `
+            <h2>In Markdown-format:</h2>
+            <div id="markdown-container"></div>`;
         }
         document.getElementById('container-collection').innerHTML = domString;
+        document.getElementById('container-collection-for-markdown').innerHTML = domStringMarkdown;
 
         var removeButtons = document.querySelectorAll('.remove-button');
         console.log('removeButtons: ', removeButtons);
@@ -44,6 +68,22 @@ function loadCollections() {
                 });
             });
         }
+
+        const turndownService = new TurndownService()
+        const markdown = turndownService.turndown(document.getElementById('container-collection-for-markdown'))
+        // console.log('markdown: ', markdown);
+
+        const markdownContainer = document.getElementById('markdown-container');
+        markdownContainer.innerHTML = `
+        <textarea rows="50" cols="33" class="form-control" id="markdown" rows="3">${markdown}</textarea>
+        `;
+
+        markdownContainer.addEventListener('click', function (e) {
+            console.log(e.target);
+            e.target.select();
+        });
+        // markdownContainer.select();
+
     });
 
     chrome.storage.local.get(['role'], function (result) {
