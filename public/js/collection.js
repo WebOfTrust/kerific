@@ -13,7 +13,7 @@ function loadCollections() {
                 // create a list item for each
 
                 domString += `
-                <div class="card mb-5">
+                <div class="card mb-5 ${terms[i].status}">
                     <div class="card-header">
                         <button type="button" class="btn btn-sm float-end copy-button" data-term="${terms[i].term}">Copy</button><button type="button" class="btn btn-danger btn-sm float-end remove-button" data-term="${terms[i].term}">Remove</button>
                         <h2>${terms[i].term}</h2>
