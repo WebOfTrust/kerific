@@ -72,7 +72,7 @@ function loadCollections() {
         const markdown = turndownService.turndown(document.getElementById('container-collection-for-markdown'))
         const markdownContainer = document.getElementById('markdown-container');
         markdownContainer.innerHTML = `
-            <textarea rows="50" cols="33" class="form-control" id="markdown" rows="3">${markdown}</textarea>
+            <textarea rows="20" cols="33" class="form-control" id="markdown" rows="3">${markdown}</textarea>
         `;
 
         markdownContainer.addEventListener('click', function (e) {
