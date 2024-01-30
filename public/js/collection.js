@@ -12,10 +12,18 @@ function loadCollections() {
                 // loop through kerificTerms.terms.term and kerificTerms.terms.definition
                 // create a list item for each
 
+                // If term is copied, add edit button
+                let editButton = '';
+                terms[i].status === 'copied' ? editButton = '<button type="button" class="me-3 btn btn-warning btn-sm float-end edit-button" data-term="' + terms[i].term + '">Edit</button>' : editButton = '';
+
+                let footerMessage = '';
+                terms[i].status === 'copied' ? footerMessage = 'This definition is a copy.' : footerMessage = 'This definition comes from: ' + terms[i].organisation;
+
+
                 domString += `
                 <div class="card mb-5 ${terms[i].status}">
                     <div class="card-header">
-                        <button type="button" class="btn btn-sm float-end copy-button" data-term="${terms[i].term}">Copy</button><button type="button" class="btn btn-danger btn-sm float-end remove-button" data-term="${terms[i].term}">Remove</button>
+                        <button type="button" class="btn btn-sm float-end copy-button" data-term="${terms[i].term}">Copy</button><button type="button" class="btn btn-danger btn-sm float-end remove-button" data-term="${terms[i].term}">Remove</button>${editButton}
                         <h2>${terms[i].term}</h2>
                     </div>
                     <div class="card-body">
@@ -25,14 +33,14 @@ function loadCollections() {
                     </div>
                     <div class="card-footer">
                         <p class="card-text">
-                            This definition comes from: ${terms[i].organisation}
+                            ${footerMessage}
                         </p>
                     </div>
                 </div>
                 `;
 
                 domStringMarkdown += `
-                <div class="card mb-5">
+                <div class="card mb-5 ${terms[i].status}">
                     <div class="card-header">
                         <h2>${terms[i].term}</h2>
                     </div>
@@ -43,7 +51,7 @@ function loadCollections() {
                     </div>
                     <div class="card-footer">
                         <p class="card-text">
-                            This definition comes from: ${terms[i].organisation}
+                            ${footerMessage}
                         </p>
                     </div>
                 </div>
