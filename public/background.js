@@ -29,6 +29,20 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         existingData.terms.sort((a, b) => a.term.toLowerCase().localeCompare(b.term.toLowerCase()));
     }
 
+    function generateUniqueId() {
+        // Get the current timestamp
+        const timestamp = Date.now();
+
+        // Generate a random number or string
+        const randomComponent = Math.random().toString(36).substring(2, 15);
+
+        // Combine the timestamp with the random component
+        const uniqueId = `${timestamp}-${randomComponent}`;
+
+        return uniqueId;
+    }
+
+
     if (request.action === "addTerm") {
 
         // Retrieve the existing data
@@ -42,7 +56,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
                     "term": request.entry.term,
                     "definition": request.entry.definition,
                     "organisation": request.entry.organisation,
-                    "status": "adopted"
+                    "status": "adopted",
+                    "id": generateUniqueId()
                 });
 
                 sortGlossary(existingData);
