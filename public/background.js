@@ -24,11 +24,16 @@ chrome.contextMenus.onClicked.addListener(function (info, tab) {
 });
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-    let existingData = result.kerificTerms || { "terms": [] };
+    function sortGlossary(existingData) {
+        // sort existingData by term, alphabetically
+        existingData.terms.sort((a, b) => a.term.toLowerCase().localeCompare(b.term.toLowerCase()));
+    }
+
     if (request.action === "addTerm") {
 
         // Retrieve the existing data
         chrome.storage.local.get('kerificTerms', function (result) {
+            let existingData = result.kerificTerms || { "terms": [] };
 
             // Check if the term is already in the collection…
             if (existingData.terms.some(obj => obj.term === request.entry.term) === false) {
@@ -38,6 +43,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
                     "definition": request.entry.definition,
                     "organisation": request.entry.organisation
                 });
+
+                sortGlossary(existingData);
 
                 // Store the updated data
                 chrome.storage.local.set({ 'kerificTerms': existingData }, function () {
@@ -58,6 +65,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     } else if (request.action === "removeTerm") {
         // Retrieve the existing data
         chrome.storage.local.get('kerificTerms', function (result) {
+            let existingData = result.kerificTerms || { "terms": [] };
 
             // Check if the term is in the collection…
             if (existingData.terms.some(obj => obj.term === request.entry.term) === true) {
@@ -66,10 +74,13 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
                     return obj.term !== request.entry.term;
                 });
 
+                sortGlossary(existingData);
+
                 // Store the updated data
                 chrome.storage.local.set({ 'kerificTerms': existingData }, function () {
                     console.log('Data is updated.');
                 });
+
 
                 // Send a response back
                 sendResponse({ response: "termRemoved" });
@@ -84,6 +95,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     } else if (request.action === "copyTerm") {
         // Copy the existing data
         chrome.storage.local.get('kerificTerms', function (result) {
+            let existingData = result.kerificTerms || { "terms": [] };
 
             // Check if the term is in the collection…
             if (existingData.terms.some(obj => obj.term === request.entry.term) === true) {
@@ -98,11 +110,13 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
                     "organisation": copiedEntry.organisation
                 });
 
+                sortGlossary(existingData);
 
                 // Store the updated data
                 chrome.storage.local.set({ 'kerificTerms': existingData }, function () {
                     console.log('Data is updated.');
                 });
+
 
                 // Send a response back
                 sendResponse({ response: "termCopied" });
@@ -133,6 +147,18 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             console.log();
         });
     }
+
+    // // sort existingData by term, alphabetically
+    // existingData.terms.sort(function (a, b) {
+    //     var termA = a.term.toLowerCase(), termB = b.term.toLowerCase();
+    //     if (termA < termB) //sort string ascending
+    //         return -1;
+    //     if (termA > termB)
+    //         return 1;
+    //     return 0; //default return value (no sorting)
+    // });
+
+
 
     // Return true for asynchronous response, if needed
     // return true;
