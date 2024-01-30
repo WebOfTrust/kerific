@@ -24,11 +24,11 @@ chrome.contextMenus.onClicked.addListener(function (info, tab) {
 });
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+    let existingData = result.kerificTerms || { "terms": [] };
     if (request.action === "addTerm") {
 
         // Retrieve the existing data
         chrome.storage.local.get('kerificTerms', function (result) {
-            let existingData = result.kerificTerms || { "terms": [] };
 
             // Check if the term is already in the collection…
             if (existingData.terms.some(obj => obj.term === request.entry.term) === false) {
@@ -58,7 +58,6 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     } else if (request.action === "removeTerm") {
         // Retrieve the existing data
         chrome.storage.local.get('kerificTerms', function (result) {
-            let existingData = result.kerificTerms || { "terms": [] };
 
             // Check if the term is in the collection…
             if (existingData.terms.some(obj => obj.term === request.entry.term) === true) {
@@ -85,7 +84,6 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     } else if (request.action === "copyTerm") {
         // Copy the existing data
         chrome.storage.local.get('kerificTerms', function (result) {
-            let existingData = result.kerificTerms || { "terms": [] };
 
             // Check if the term is in the collection…
             if (existingData.terms.some(obj => obj.term === request.entry.term) === true) {
