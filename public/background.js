@@ -150,18 +150,6 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         });
     }
 
-    // // sort existingData by term, alphabetically
-    // existingData.terms.sort(function (a, b) {
-    //     var termA = a.term.toLowerCase(), termB = b.term.toLowerCase();
-    //     if (termA < termB) //sort string ascending
-    //         return -1;
-    //     if (termA > termB)
-    //         return 1;
-    //     return 0; //default return value (no sorting)
-    // });
-
-
-
     // Return true for asynchronous response, if needed
     // return true;
 });
