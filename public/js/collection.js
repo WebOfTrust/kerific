@@ -21,9 +21,9 @@ function loadCollections() {
 
 
                 domString += `
-                <div class="card mb-5 ${terms[i].status}">
+                <div class="card mb-5 ${terms[i].status}" data-uniqueid="${terms[i].uniqueId}">
                     <div class="card-header">
-                        <button type="button" class="btn btn-sm float-end copy-button" data-term="${terms[i].term}">Copy</button><button type="button" class="btn btn-danger btn-sm float-end remove-button" data-term="${terms[i].term}">Remove</button>${editButton}
+                        <button type="button" class="btn btn-sm float-end copy-button" data-term="${terms[i].term}">Copy</button><button type="button" class="btn btn-danger btn-sm float-end remove-button" data-term="${terms[i].term}" data-uniqueid="${terms[i].uniqueId}">Remove</button>${editButton}
                         <h2>${terms[i].term}</h2>
                     </div>
                     <div class="card-body">
@@ -69,7 +69,7 @@ function loadCollections() {
         for (var i = 0; i < removeButtons.length; i++) {
             removeButtons[i].addEventListener('click', function () {
                 console.log('remove button clicked');
-                chrome.runtime.sendMessage({ action: "removeTerm", entry: { term: this.dataset.term } }, function (response) {
+                chrome.runtime.sendMessage({ action: "removeTerm", entry: { term: this.dataset.term, uniqueId: this.dataset.uniqueid } }, function (response) {
                     console.log("Response:", response);
                     loadCollections();
                 });
