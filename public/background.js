@@ -57,7 +57,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
                     "definition": request.entry.definition,
                     "organisation": request.entry.organisation,
                     "status": "adopted",
-                    "id": generateUniqueId()
+                    "uniqueId": generateUniqueId()
                 });
 
                 sortGlossary(existingData);
@@ -87,7 +87,9 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             if (existingData.terms.some(obj => obj.term === request.entry.term) === true) {
                 // … if so, remove entry
                 existingData.terms = existingData.terms.filter(function (obj) {
-                    return obj.term !== request.entry.term;
+
+
+                    return obj.uniqueId !== request.entry.uniqueId;
                 });
 
                 sortGlossary(existingData);
@@ -124,7 +126,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
                     "term": copiedEntry.term,
                     "definition": copiedEntry.definition,
                     "organisation": copiedEntry.organisation,
-                    "status": "copied"
+                    "status": "copied",
+                    "uniqueId": generateUniqueId()
                 });
 
                 sortGlossary(existingData);
