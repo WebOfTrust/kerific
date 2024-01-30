@@ -41,7 +41,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
                 existingData.terms.push({
                     "term": request.entry.term,
                     "definition": request.entry.definition,
-                    "organisation": request.entry.organisation
+                    "organisation": request.entry.organisation,
+                    "status": "adopted"
                 });
 
                 sortGlossary(existingData);
@@ -107,7 +108,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
                 existingData.terms.push({
                     "term": copiedEntry.term,
                     "definition": copiedEntry.definition,
-                    "organisation": copiedEntry.organisation
+                    "organisation": copiedEntry.organisation,
+                    "status": "copied"
                 });
 
                 sortGlossary(existingData);
