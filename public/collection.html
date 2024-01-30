@@ -7,6 +7,33 @@
     <title>Kerific</title>
     <link rel="stylesheet" href="css/bootstrap-5.3.2/bootstrap.min.css">
     <link rel="stylesheet" href="assets/index.css">
+    <style>
+        .adopted {
+            background-color: #a6c9fd1c;
+        }
+
+        .copied {
+            background-color: #a6fdc92a;
+            box-shadow:
+                13px 15px 0px rgba(0, 0, 0, 0.07);
+        }
+
+        /* Define the fade-in animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Apply the animation to the div */
+        .copied {
+            animation: fadeIn 1s ease-in-out;
+        }
+    </style>
 </head>
 
 <body class="m-5 mx-auto" style="max-width: 60em;">
