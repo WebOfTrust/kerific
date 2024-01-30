@@ -51,7 +51,7 @@ function loadCollections() {
             }
 
             domString += `
-            <h2 id="markdownformat">In Markdown-format:</h2>
+            <button id="select-markdown" type="button" class="btn btn-info btn-sm float-end">Select</button><h2 id="markdownformat">In Markdown-format:</h2>
             <div id="markdown-container"></div>`;
         }
         document.getElementById('container-collection').innerHTML = domString;
@@ -71,12 +71,18 @@ function loadCollections() {
         const turndownService = new TurndownService()
         const markdown = turndownService.turndown(document.getElementById('container-collection-for-markdown'))
         const markdownContainer = document.getElementById('markdown-container');
+        const selectMarkdownButton = document.getElementById('select-markdown');
         markdownContainer.innerHTML = `
             <textarea rows="15" cols="33" class="form-control" id="markdown" rows="3">${markdown}</textarea>
         `;
 
         markdownContainer.addEventListener('click', function (e) {
             e.target.select();
+        });
+
+        selectMarkdownButton.addEventListener('click', function () {
+            const markdownContainerTextarea = document.querySelector('#markdown-container textarea');
+            markdownContainerTextarea.select();
         });
     });
 
