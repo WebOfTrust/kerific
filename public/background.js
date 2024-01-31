@@ -93,8 +93,6 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
             if (existingData.terms.some(obj => obj.term === request.entry.term) === true) {
                 // … if so, remove entry
                 existingData.terms = existingData.terms.filter(function (obj) {
-
-
                     return obj.uniqueId !== request.entry.uniqueId;
                 });
 
