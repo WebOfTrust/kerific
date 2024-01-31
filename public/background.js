@@ -114,6 +114,41 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 
         // Keep the message channel open for asynchronous response
         return true;
+    } else if (request.action === "editSaveTerm") {
+        /************** */
+        /* EDIT TERM  */
+        /************** */
+
+        // Retrieve the existing data
+        chrome.storage.local.get('kerificTerms', function (result) {
+            let existingData = result.kerificTerms || { "terms": [] };
+
+            // Check if the term is in the collection…
+            if (existingData.terms.some(obj => obj.uniqueId === request.entry.uniqueId) === true) {
+
+                // Go through each object in the array, find the one with the matching uniqueId, and update the definition
+                existingData.terms.forEach(function (obj) {
+                    if (obj.uniqueId === request.entry.uniqueId) {
+                        obj.definition = request.entry.newValue;
+                    }
+                });
+
+                // Store the updated data
+                chrome.storage.local.set({ 'kerificTerms': existingData }, function () {
+                    console.log('Data is updated.');
+                });
+
+
+                // Send a response back
+                sendResponse({ response: "termRemoved" });
+            } else {
+                // … if not, send a response back that term is not found
+                sendResponse({ response: "termNotFound" });
+            }
+        });
+
+        // Keep the message channel open for asynchronous response
+        return true;
     } else if (request.action === "copyTerm") {
         /************** */
         /* COPY TERM  */
