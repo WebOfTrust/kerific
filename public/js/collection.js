@@ -31,7 +31,7 @@ function loadCollections() {
     chrome.storage.local.get(['kerificTerms'], function (result) {
         let domString = '';
         let domStringMarkdown = '';
-        let domStrinFullHTMLpage = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>My custom glossary</title></head><body><h1>My custom glossary</h1>`;
+        let domStringFullHTMLpage = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>My custom glossary</title></head><body><h1>My custom glossary</h1>`;
 
         if (result.kerificTerms === undefined) {
             domString = '<p>No terms found</p>';
@@ -90,7 +90,7 @@ function loadCollections() {
                 `;
 
                 // Create separate string for full HTML page
-                domStrinFullHTMLpage += `              
+                domStringFullHTMLpage += `              
                 <h2>${terms[i].term}</h2>
                 <p class="card-text">
                 ${terms[i].definition}
@@ -113,7 +113,7 @@ function loadCollections() {
             `;
 
             // Add closing tags for full HTML page
-            domStrinFullHTMLpage += `</body></html>`
+            domStringFullHTMLpage += `</body></html>`
         }
         document.getElementById('container-collection').innerHTML = domString;
         document.getElementById('container-collection-for-markdown').innerHTML = domStringMarkdown;
@@ -175,7 +175,7 @@ function loadCollections() {
 
         const saveToFullHTMLFileButton = document.getElementById('save-to-full-html-page-file-button');
         saveToFullHTMLFileButton.addEventListener('click', function () {
-            saveStringToFile(domStrinFullHTMLpage, 'my-custom-glossary.html');
+            saveStringToFile(domStringFullHTMLpage, 'my-custom-glossary.html');
         });
 
         const turndownService = new TurndownService()
