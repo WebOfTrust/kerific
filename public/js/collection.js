@@ -1,7 +1,37 @@
 function loadCollections() {
+    function saveStringToFile(stringToSave, filename) {
+        // Step 1: Create a Blob from the string
+        const blob = new Blob([stringToSave], { type: 'text/plain' });
+
+        // Step 2: Create a URL for the Blob
+        const url = URL.createObjectURL(blob);
+
+        // Step 3: Create an anchor (<a>) element
+        const a = document.createElement('a');
+
+        // Step 4: Set the href and download attributes of the anchor
+        a.href = url;
+        a.download = filename || 'default.txt'; // Default filename if none provided
+
+        // Temporarily add the anchor to the document to trigger the click event
+        document.body.appendChild(a);
+
+        // Step 5: Trigger a click on the anchor
+        a.click();
+
+        // Clean up by revoking the Blob URL and removing the anchor from the document
+        URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+    }
+
+    // Example usage
+    // saveStringToFile('Hello, world!', 'example.txt');
+
+
     chrome.storage.local.get(['kerificTerms'], function (result) {
         let domString = '';
         let domStringMarkdown = '';
+        let domStrinFullHTMLpage = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>My custom glossary</title></head><body><h1>My custom glossary</h1>`;
 
         if (result.kerificTerms === undefined) {
             domString = '<p>No terms found</p>';
@@ -14,7 +44,7 @@ function loadCollections() {
 
                 // If term is copied, add edit button
                 let editButton = '';
-                terms[i].status === 'copied' ? editButton = `<button type="button" class="me-3 btn btn-warning btn-sm float-end edit-button" data-term="${terms[i].term}">Edit</button><button type="button" class="me-3 btn btn-warning btn-sm float-end save-button" data-term="${terms[i].term}" data-uniqueid="${terms[i].uniqueId}">Save</button>` : editButton = ``;
+                terms[i].status === 'copied' ? editButton = `<button type="button" class="me-3 btn btn-warning btn-sm float-end edit-button" data-term="${terms[i].term}" data-uniqueid="${terms[i].uniqueId}">Edit</button><button type="button" class="me-3 btn btn-warning btn-sm float-end save-button" data-term="${terms[i].term}" data-uniqueid="${terms[i].uniqueId}" disabled>Save</button>` : editButton = ``;
 
                 let footerMessage = '';
                 terms[i].status === 'copied' ? footerMessage = 'This definition is a copy.' : footerMessage = 'This definition comes from: ' + terms[i].organisation;
@@ -56,11 +86,26 @@ function loadCollections() {
                     </div>
                 </div>
                 `;
+
+                domStrinFullHTMLpage += `              
+                <h2>${terms[i].term}</h2>
+                <p class="card-text">
+                ${terms[i].definition}
+                </p>
+                <small class="card-text">
+                    ${footerMessage}
+                </small>
+                `;
             }
 
             domString += `
             <button id="select-markdown" type="button" class="btn btn-info btn-sm float-end">Select</button><h2 id="markdownformat">In Markdown-format:</h2>
-            <div id="markdown-container"></div>`;
+            <div id="markdown-container"></div>
+            <button id="save-to-markdown-file-button" type="button" class="btn btn-info btn-sm float-end mt-2">Save Markdown to file</button>
+            <button id="save-to-full-html-page-file-button" type="button" class="btn btn-info btn-sm float-end mt-2 me-2">Save to html page</button>
+            `;
+
+            domStrinFullHTMLpage += `</body></html>`
         }
         document.getElementById('container-collection').innerHTML = domString;
         document.getElementById('container-collection-for-markdown').innerHTML = domStringMarkdown;
@@ -96,6 +141,8 @@ function loadCollections() {
                 editableTextarea.setAttribute('contenteditable', 'true');
                 editableTextarea.classList.add('editable');
                 editableTextarea.focus();
+
+                document.querySelector(`.save-button[data-uniqueid="${this.dataset.uniqueid}"]`).removeAttribute('disabled');
             });
         }
 
@@ -111,6 +158,17 @@ function loadCollections() {
                 });
             });
         }
+
+        const saveToMarkdownFileButton = document.getElementById('save-to-markdown-file-button');
+        saveToMarkdownFileButton.addEventListener('click', function () {
+            const markdownContainerTextarea = document.querySelector('#markdown-container textarea');
+            saveStringToFile(markdownContainerTextarea.value, 'my-custom-glossary.md');
+        });
+
+        const saveToFullHTMLFileButton = document.getElementById('save-to-full-html-page-file-button');
+        saveToFullHTMLFileButton.addEventListener('click', function () {
+            saveStringToFile(domStrinFullHTMLpage, 'my-custom-glossary.html');
+        });
 
         const turndownService = new TurndownService()
         const markdown = turndownService.turndown(document.getElementById('container-collection-for-markdown'))
