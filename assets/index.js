@@ -3775,7 +3775,7 @@ const iziToast = /* @__PURE__ */ getDefaultExportFromCjs(iziToastExports);
         // bottomRight, bottomLeft, topRight, topLeft, topCenter, bottomCenter
         progressBarColor: "rgb(91 175 255)",
         maxWidth: "25%",
-        timeout: 1e4,
+        timeout: 3e3,
         // buttons: [
         //     ['<button>Ok</button>', function (instance, toast) {
         //         alert("Hello world!");
