@@ -87,6 +87,23 @@ function loadCollections() {
             });
         }
 
+        const editButtons = document.querySelectorAll('.edit-button');
+        for (var i = 0; i < editButtons.length; i++) {
+            editButtons[i].addEventListener('click', function () {
+                console.log('edit button clicked');
+
+                const editableTextarea = this.closest('.card-header').nextElementSibling;
+                editableTextarea.setAttribute('contenteditable', 'true');
+                editableTextarea.classList.add('editable');
+                editableTextarea.focus();
+
+                // chrome.runtime.sendMessage({ action: "editTerm", entry: { term: this.dataset.term } }, function (response) {
+                //     console.log("Response:", response);
+                //     loadCollections();
+                // });
+            });
+        }
+
         const turndownService = new TurndownService()
         const markdown = turndownService.turndown(document.getElementById('container-collection-for-markdown'))
         const markdownContainer = document.getElementById('markdown-container');
