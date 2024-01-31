@@ -14,7 +14,7 @@ function loadCollections() {
 
                 // If term is copied, add edit button
                 let editButton = '';
-                terms[i].status === 'copied' ? editButton = '<button type="button" class="me-3 btn btn-warning btn-sm float-end edit-button" data-term="' + terms[i].term + '">Edit</button>' : editButton = '';
+                terms[i].status === 'copied' ? editButton = `<button type="button" class="me-3 btn btn-warning btn-sm float-end edit-button" data-term="${terms[i].term}">Edit</button><button type="button" class="me-3 btn btn-warning btn-sm float-end save-button" data-term="${terms[i].term}" data-uniqueid="${terms[i].uniqueId}">Save</button>` : editButton = ``;
 
                 let footerMessage = '';
                 terms[i].status === 'copied' ? footerMessage = 'This definition is a copy.' : footerMessage = 'This definition comes from: ' + terms[i].organisation;
@@ -96,11 +96,19 @@ function loadCollections() {
                 editableTextarea.setAttribute('contenteditable', 'true');
                 editableTextarea.classList.add('editable');
                 editableTextarea.focus();
+            });
+        }
 
-                // chrome.runtime.sendMessage({ action: "editTerm", entry: { term: this.dataset.term } }, function (response) {
-                //     console.log("Response:", response);
-                //     loadCollections();
-                // });
+        const saveButtons = document.querySelectorAll('.save-button');
+        for (var i = 0; i < saveButtons.length; i++) {
+            saveButtons[i].addEventListener('click', function () {
+                console.log('save button clicked');
+                const editableTextarea = this.closest('.card-header').nextElementSibling;
+
+                chrome.runtime.sendMessage({ action: "editSaveTerm", entry: { term: this.dataset.term, uniqueId: this.dataset.uniqueid, newValue: editableTextarea.innerHTML } }, function (response) {
+                    console.log("Response:", response);
+                    loadCollections();
+                });
             });
         }
 
