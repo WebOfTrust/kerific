@@ -46,10 +46,11 @@ function loadCollections() {
                 let editButton = '';
                 terms[i].status === 'copied' ? editButton = `<button type="button" class="me-3 btn btn-warning btn-sm float-end edit-button" data-term="${terms[i].term}" data-uniqueid="${terms[i].uniqueId}">Edit</button><button type="button" class="me-3 btn btn-warning btn-sm float-end save-button" data-term="${terms[i].term}" data-uniqueid="${terms[i].uniqueId}" disabled>Save</button>` : editButton = ``;
 
+                // Add customized message depending on if term is copied or not
                 let footerMessage = '';
                 terms[i].status === 'copied' ? footerMessage = 'This definition is a copy.' : footerMessage = 'This definition comes from: ' + terms[i].organisation;
 
-
+                // Add term to domString
                 domString += `
                 <div class="card mb-5 ${terms[i].status}" data-uniqueid="${terms[i].uniqueId}">
                     <div class="card-header">
@@ -69,6 +70,7 @@ function loadCollections() {
                 </div>
                 `;
 
+                // Create separate string for markdown
                 domStringMarkdown += `
                 <div class="card mb-5 ${terms[i].status}">
                     <div class="card-header">
@@ -87,6 +89,7 @@ function loadCollections() {
                 </div>
                 `;
 
+                // Create separate string for full HTML page
                 domStrinFullHTMLpage += `              
                 <h2>${terms[i].term}</h2>
                 <p class="card-text">
@@ -98,13 +101,18 @@ function loadCollections() {
                 `;
             }
 
+            // Add buttons for markdown select, markdown textarea and save to file
             domString += `
             <button id="select-markdown" type="button" class="btn btn-info btn-sm float-end">Select</button><h2 id="markdownformat">In Markdown-format:</h2>
+            
             <div id="markdown-container"></div>
+
             <button id="save-to-markdown-file-button" type="button" class="btn btn-info btn-sm float-end mt-2">Save Markdown to file</button>
+            
             <button id="save-to-full-html-page-file-button" type="button" class="btn btn-info btn-sm float-end mt-2 me-2">Save to html page</button>
             `;
 
+            // Add closing tags for full HTML page
             domStrinFullHTMLpage += `</body></html>`
         }
         document.getElementById('container-collection').innerHTML = domString;
