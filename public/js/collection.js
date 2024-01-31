@@ -32,6 +32,7 @@ function loadCollections() {
         let domString = '';
         let domStringMarkdown = '';
         let domStringFullHTMLpage = `<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>My custom glossary</title></head><body><h1>My custom glossary</h1>`;
+        let jsonTerms = '';
 
         if (result.kerificTerms === undefined) {
             domString = '<p>No terms found</p>';
@@ -101,6 +102,9 @@ function loadCollections() {
                 `;
             }
 
+            // create string with JSON.stringify(result.kerificTerms.terms)
+            jsonTerms = JSON.stringify(result.kerificTerms.terms);
+
             // Add buttons for markdown select, markdown textarea and save to file
             domString += `
             <button id="select-markdown" type="button" class="btn btn-info btn-sm float-end">Select</button><h2 id="markdownformat">In Markdown-format:</h2>
@@ -110,6 +114,8 @@ function loadCollections() {
             <button id="save-to-markdown-file-button" type="button" class="btn btn-info btn-sm float-end mt-2">Save Markdown to file</button>
             
             <button id="save-to-full-html-page-file-button" type="button" class="btn btn-info btn-sm float-end mt-2 me-2">Save to html page</button>
+
+            <button id="save-to-json-file-button" type="button" class="btn btn-info btn-sm float-end mt-2 me-2">Save to json page</button>
             `;
 
             // Add closing tags for full HTML page
@@ -176,6 +182,11 @@ function loadCollections() {
         const saveToFullHTMLFileButton = document.getElementById('save-to-full-html-page-file-button');
         saveToFullHTMLFileButton.addEventListener('click', function () {
             saveStringToFile(domStringFullHTMLpage, 'my-custom-glossary.html');
+        });
+
+        const saveToJsonFileButton = document.getElementById('save-to-json-file-button');
+        saveToJsonFileButton.addEventListener('click', function () {
+            saveStringToFile(jsonTerms, 'my-custom-glossary.json');
         });
 
         const turndownService = new TurndownService()
