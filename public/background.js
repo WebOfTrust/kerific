@@ -42,8 +42,10 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         return uniqueId;
     }
 
-
     if (request.action === "addTerm") {
+        /************** */
+        /* ADD TERM  */
+        /************** */
 
         // Retrieve the existing data
         chrome.storage.local.get('kerificTerms', function (result) {
@@ -79,6 +81,10 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         // Keep the message channel open for asynchronous response
         return true;
     } else if (request.action === "removeTerm") {
+        /************** */
+        /* REMOVE TERM  */
+        /************** */
+
         // Retrieve the existing data
         chrome.storage.local.get('kerificTerms', function (result) {
             let existingData = result.kerificTerms || { "terms": [] };
@@ -111,6 +117,10 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         // Keep the message channel open for asynchronous response
         return true;
     } else if (request.action === "copyTerm") {
+        /************** */
+        /* COPY TERM  */
+        /************** */
+
         // Copy the existing data
         chrome.storage.local.get('kerificTerms', function (result) {
             let existingData = result.kerificTerms || { "terms": [] };
@@ -137,7 +147,6 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
                     console.log('Data is updated.');
                 });
 
-
                 // Send a response back
                 sendResponse({ response: "termCopied" });
             } else {
@@ -150,6 +159,10 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         return true;
 
     } else if (request.action === "clearStorage") {
+        /*******************/
+        /* CLEAR ALL TERMS */
+        /*******************/
+
         // Handle clearing storage
         chrome.storage.local.clear(function () {
             var error = chrome.runtime.lastError;
@@ -161,6 +174,10 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         });
         return true; // For asynchronous response
     } else if (request.action === "setRole") {
+        /************** */
+        /* SET ROLE     */
+        /************** */
+
         sendResponse({ response: "dit is wat ik stuurde" + request.role });
 
         chrome.storage.local.set({ 'role': request.role }, function (result) {
