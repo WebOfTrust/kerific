@@ -105,7 +105,7 @@ function loadCollections() {
                 console.log('save button clicked');
                 const editableTextarea = this.closest('.card-header').nextElementSibling;
 
-                chrome.runtime.sendMessage({ action: "editSaveTerm", entry: { term: this.dataset.term, uniqueId: this.dataset.uniqueid, newValue: editableTextarea.innerHTML } }, function (response) {
+                chrome.runtime.sendMessage({ action: "editSaveTerm", entry: { term: this.dataset.term, uniqueId: this.dataset.uniqueid, newValue: DOMPurify.sanitize(editableTextarea.innerHTML) } }, function (response) {
                     console.log("Response:", response);
                     loadCollections();
                 });
