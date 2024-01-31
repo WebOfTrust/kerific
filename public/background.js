@@ -178,7 +178,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
         /* SET ROLE     */
         /************** */
 
-        sendResponse({ response: "dit is wat ik stuurde" + request.role });
+        sendResponse({ response: "Role: " + request.role });
 
         chrome.storage.local.set({ 'role': request.role }, function (result) {
             console.log();
