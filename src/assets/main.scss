@@ -1,3 +1,5 @@
+@import 'base64';
+
 .close-cross {
     font-size: 1.5em;
     display: block;
@@ -210,7 +212,17 @@ button.kerific-match {
 //     background-color: rgba(244, 145, 225, 0.679);
 // }
 
+
 #loading-indicator {
+    // background: #e5ecff;
+    // background: transparent url(images/vangoghmuseum-s0198V1962-800.jpg) no-repeat center;
+    background: #1dadf0d8 url(#{$loadingBackgroundImage}) no-repeat center;
+    background-size: contain;
+    text-shadow: 0px 0px 10px rgb(255, 255, 255);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif !important;
+    font-size: 30px !important;
+    color: #333 !important;
+
     position: fixed;
     top: 50%;
     left: 50%;
@@ -218,10 +230,10 @@ button.kerific-match {
     text-align: center;
     border: 1px solid #333;
     border-radius: 20px;
-    background: #e5ecff;
     padding: 3em;
     z-index: 9999999999999999;
 }
+
 
 .displayBlock {
     display: block !important;
