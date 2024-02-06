@@ -115,7 +115,7 @@ function loadCollections() {
             
             <button id="save-to-full-html-page-file-button" type="button" class="btn btn-info btn-sm float-end mt-2 me-2">Save to html page</button>
 
-            <button id="save-to-json-file-button" type="button" class="btn btn-info btn-sm float-end mt-2 me-2">Save to json page</button>
+            <button id="save-to-json-file-button" type="button" class="btn btn-info btn-sm float-end mt-2 me-2">Save to json file</button>
             `;
 
             // Add closing tags for full HTML page

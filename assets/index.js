@@ -3476,7 +3476,7 @@ const iziToast = /* @__PURE__ */ getDefaultExportFromCjs(iziToastExports);
   );
   const loadingIndicator = document.createElement("h1");
   loadingIndicator.id = "loading-indicator";
-  loadingIndicator.textContent = "Loading glossaries…";
+  loadingIndicator.textContent = "Harvesting glossaries…";
   document.body.appendChild(loadingIndicator);
   function removeLinks(htmlString) {
     const parser = new DOMParser();
