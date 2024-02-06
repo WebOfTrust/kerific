@@ -55,7 +55,7 @@ import './assets/main.css'
     loadingIndicator.id = 'loading-indicator';
 
     // loadingIndicator.style.cssText = cssTextLoadingIndicator;
-    loadingIndicator.textContent = 'Loading glossaries…';
+    loadingIndicator.textContent = 'Harvesting glossaries…';
     document.body.appendChild(loadingIndicator);
 
     function removeLinks(htmlString) {
