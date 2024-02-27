@@ -1,3 +1,12 @@
+/**
+ * Author: Kor Dwarshuis
+ * Created: 2023-12
+ * Description: This is the main file for the Kerific extension. It is responsible for injecting the Kerific functionality into the current page.
+ * 
+ * Note: “popup” is used to refer to the small windows that appear when a term is clicked.
+ * 
+ */
+
 import interact from "interactjs";
 import iziToast from 'izitoast';
 import './assets/main.css'
