@@ -1,6 +1,5 @@
 import interact from "interactjs";
 import iziToast from 'izitoast';
-
 import './assets/main.css'
 
 /* 
