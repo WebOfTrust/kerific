@@ -15,17 +15,11 @@ import './assets/main.css'
     Use Immediately Invoked Function Expressions(IIFE): Wrap your entire code in an IIFE.This creates a new scope each time the script is run, preventing variable and function redeclarations. This is a common pattern for bookmarklets and scripts injected into pages.
 */
 (function () {
-    /*
-     * CONFIGURATION
-     */
-
+    /* CONFIGURATION */
     const glossaryJsonUrl = "https://weboftrust.github.io/WOT-terms/json/external-glosseries/glossaries-combined/dictionary.json";
-
     const versionNumberUrl = "https://weboftrust.github.io/kerific/manifest.json";//TODO: fetch it from local
+    /* END CONFIGURATION */
 
-    /*
-     * END CONFIGURATION
-     */
 
     let popUpLedger = [];
 
@@ -204,9 +198,21 @@ import './assets/main.css'
                         // Remove the original node
                         parentNode.removeChild(node);
                     });
+
+                    // Handle <textarea> elements separately
+                    const textareas = rootElement.querySelectorAll('textarea');
+                    textareas.forEach(textarea => {
+                        textarea.value = textarea.value.replace(searchRegex, `<span class="${spanClass}">$&</span>`);
+                    });
                 }
 
+                // Example usage:
                 wrapTextWithTreeWalker(document.querySelector('body'), combinedGlossariesEntry.termToLowerCase, "kerific-match");
+
+
+
+
+
             });
 
             function createButtonsInContainers() {
