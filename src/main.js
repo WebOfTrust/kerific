@@ -23,19 +23,14 @@ import './assets/main.css'
 
     let popUpLedger = [];
 
-    /*
-     * Inject CSS
-     */
-
+    /* INJECT CSS */
     // Insert https://animate.style/ via CDN
     const animateCss = document.createElement('link');
     animateCss.rel = 'stylesheet';
     animateCss.href = 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css';
     document.head.appendChild(animateCss);
+    /* END INJECT CSS */
 
-    /*
-     * END Inject CSS
-     */
 
     // In case the script runs multiple times on the same page, remove all previous popups and highlights
     // Remove all elements with class="kerific-popup" and class="kerific-term-highlight"
