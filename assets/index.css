@@ -117,7 +117,6 @@
 .kerific-popup .card-footer {
   position: sticky;
   bottom: 0;
-  background: #eee url(../images/icon128-transparent-20percent.png) no-repeat center;
   background-size: contain;
   padding: 0 0.5em;
   background: #f5f9fb !important;
