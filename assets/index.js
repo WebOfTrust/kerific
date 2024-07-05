@@ -3456,7 +3456,7 @@ var iziToast$1 = { exports: {} };
 var iziToastExports = iziToast$1.exports;
 const iziToast = /* @__PURE__ */ getDefaultExportFromCjs(iziToastExports);
 (function() {
-  const glossaryJsonUrl = "https://weboftrust.github.io/WOT-terms/json/external-glosseries/glossaries-combined/all-glossaries.json";
+  const glossaryJsonUrl = "https://weboftrust.github.io/WOT-terms/json/external-glosseries/glossaries-combined/dictionary.json";
   const versionNumberUrl = "https://weboftrust.github.io/kerific/manifest.json";
   let popUpLedger = [];
   const animateCss = document.createElement("link");
