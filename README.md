@@ -12,12 +12,10 @@ KERISSE is our engine for Concepts and Education targetted at programmers *to be
 
 It is in the [Chrome Webstore](https://chromewebstore.google.com/detail/kerific/ckbmkbbmnfbeecfmoiohobcdmopekgmp?hl=nl)
 
-## For maintainers
+## Related repos
 
-### Submitting an extension
+Mid 2024, we split the old WOT-terms repo into:
 
-The steps to submit an extension to the Google Chrome Store can be found online and are not repeated here. It is important to note that the result of `npm run build` is what needs to be submitted and this can be found in the directory `/dist`.
-
-### Testing an extension
-
-It is possible to test locally by entering the code locally. To do this, go to the extension section in Chrome (or similar browser) and click on "load unpacked". Here you load the code into the aforementioned directory. You can reload this code via the reload button in the extension.
+- [kerisse](https://github.com/WebOfTrust/kerisse) : search engine (Typesense-based [github.io site](https://weboftrust.github.io/kerisse/))
+- new [WOT-terms](https://github.com/WebOfTrust/WOT-terms): glossary, solely focussed on terminology, filtering, and connect to source management (Docusaurus-based [github.io site](https://weboftrust.github.io/WOT-terms/?level=2))
+- [keridoc:](https://github.com/WebOfTrust/keridoc) KERI documentation site (Docusaurus-based: [github.io site](https://weboftrust.github.io/keridoc/?level=2))
