@@ -36,8 +36,7 @@
             ],
             "css": [
                 "assets/index.css",
-                "css/izitoast/izitoast.min.css",
-                "css/bootstrap-5.3.2/bootstrap.min.css"
+                "css/izitoast/izitoast.min.css"
             ]
         }
     ]

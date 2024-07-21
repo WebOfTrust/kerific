@@ -3554,6 +3554,10 @@ const iziToast = /* @__PURE__ */ getDefaultExportFromCjs(iziToastExports);
           }
           parentNode.removeChild(node2);
         });
+        const textareas = rootElement.querySelectorAll("textarea");
+        textareas.forEach((textarea) => {
+          textarea.value = textarea.value.replace(searchRegex, `<span class="${spanClass}">$&</span>`);
+        });
       }
       wrapTextWithTreeWalker(document.querySelector("body"), combinedGlossariesEntry.termToLowerCase, "kerific-match");
     });
