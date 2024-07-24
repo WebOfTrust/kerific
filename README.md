@@ -10,7 +10,7 @@ KERISSE is our engine for Concepts and Education targetted at programmers *to be
 
 ## Download kerific
 
-It is in the [Chrome Webstore](https://chromewebstore.google.com/detail/kerific/ckbmkbbmnfbeecfmoiohobcdmopekgmp?hl=nl)
+It is in the [Chrome Webstore](https://chromewebstore.google.com/detail/kerific/ckbmkbbmnfbeecfmoiohobcdmopekgmp)
 
 ## Related repos
 
