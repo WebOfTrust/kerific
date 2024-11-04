@@ -19,16 +19,12 @@
   }).observe(document, { childList: true, subtree: true });
   function getFetchOpts(link) {
     const fetchOpts = {};
-    if (link.integrity)
-      fetchOpts.integrity = link.integrity;
-    if (link.referrerPolicy)
-      fetchOpts.referrerPolicy = link.referrerPolicy;
+    if (link.integrity) fetchOpts.integrity = link.integrity;
+    if (link.referrerPolicy) fetchOpts.referrerPolicy = link.referrerPolicy;
     if (link.crossOrigin === "use-credentials")
       fetchOpts.credentials = "include";
-    else if (link.crossOrigin === "anonymous")
-      fetchOpts.credentials = "omit";
-    else
-      fetchOpts.credentials = "same-origin";
+    else if (link.crossOrigin === "anonymous") fetchOpts.credentials = "omit";
+    else fetchOpts.credentials = "same-origin";
     return fetchOpts;
   }
   function processPreload(link) {
@@ -78,8 +74,7 @@ interact_min.exports;
       }, n(t2);
     }
     function r(t2, e2) {
-      if (!(t2 instanceof e2))
-        throw new TypeError("Cannot call a class as a function");
+      if (!(t2 instanceof e2)) throw new TypeError("Cannot call a class as a function");
     }
     function i(t2, e2) {
       for (var n2 = 0; n2 < e2.length; n2++) {
@@ -88,14 +83,13 @@ interact_min.exports;
       }
     }
     function o(t2, e2, n2) {
-      return e2 && i(t2.prototype, e2), n2 && i(t2, n2), Object.defineProperty(t2, "prototype", { writable: false }), t2;
+      return e2 && i(t2.prototype, e2), Object.defineProperty(t2, "prototype", { writable: false }), t2;
     }
     function a(t2, e2, n2) {
       return (e2 = d(e2)) in t2 ? Object.defineProperty(t2, e2, { value: n2, enumerable: true, configurable: true, writable: true }) : t2[e2] = n2, t2;
     }
     function s(t2, e2) {
-      if ("function" != typeof e2 && null !== e2)
-        throw new TypeError("Super expression must either be null or a function");
+      if ("function" != typeof e2 && null !== e2) throw new TypeError("Super expression must either be null or a function");
       t2.prototype = Object.create(e2 && e2.prototype, { constructor: { value: t2, writable: true, configurable: true } }), Object.defineProperty(t2, "prototype", { writable: false }), e2 && l(t2, e2);
     }
     function c(t2) {
@@ -109,18 +103,14 @@ interact_min.exports;
       }, l(t2, e2);
     }
     function u(t2) {
-      if (void 0 === t2)
-        throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+      if (void 0 === t2) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
       return t2;
     }
     function p(t2) {
       var e2 = function() {
-        if ("undefined" == typeof Reflect || !Reflect.construct)
-          return false;
-        if (Reflect.construct.sham)
-          return false;
-        if ("function" == typeof Proxy)
-          return true;
+        if ("undefined" == typeof Reflect || !Reflect.construct) return false;
+        if (Reflect.construct.sham) return false;
+        if ("function" == typeof Proxy) return true;
         try {
           return Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {
           })), true;
@@ -133,13 +123,10 @@ interact_min.exports;
         if (e2) {
           var i2 = c(this).constructor;
           n2 = Reflect.construct(r2, arguments, i2);
-        } else
-          n2 = r2.apply(this, arguments);
+        } else n2 = r2.apply(this, arguments);
         return function(t3, e3) {
-          if (e3 && ("object" == typeof e3 || "function" == typeof e3))
-            return e3;
-          if (void 0 !== e3)
-            throw new TypeError("Derived constructors may only return object or undefined");
+          if (e3 && ("object" == typeof e3 || "function" == typeof e3)) return e3;
+          if (void 0 !== e3) throw new TypeError("Derived constructors may only return object or undefined");
           return u(t3);
         }(this, n2);
       };
@@ -147,8 +134,7 @@ interact_min.exports;
     function f() {
       return f = "undefined" != typeof Reflect && Reflect.get ? Reflect.get.bind() : function(t2, e2, n2) {
         var r2 = function(t3, e3) {
-          for (; !Object.prototype.hasOwnProperty.call(t3, e3) && null !== (t3 = c(t3)); )
-            ;
+          for (; !Object.prototype.hasOwnProperty.call(t3, e3) && null !== (t3 = c(t3)); ) ;
           return t3;
         }(t2, e2);
         if (r2) {
@@ -159,16 +145,14 @@ interact_min.exports;
     }
     function d(t2) {
       var e2 = function(t3, e3) {
-        if ("object" != typeof t3 || null === t3)
-          return t3;
+        if ("object" != typeof t3 || null === t3) return t3;
         var n2 = t3[Symbol.toPrimitive];
         if (void 0 !== n2) {
-          var r2 = n2.call(t3, e3 || "default");
-          if ("object" != typeof r2)
-            return r2;
+          var r2 = n2.call(t3, e3);
+          if ("object" != typeof r2) return r2;
           throw new TypeError("@@toPrimitive must return a primitive value.");
         }
-        return ("string" === e3 ? String : Number)(t3);
+        return String(t3);
       }(t2, "string");
       return "symbol" == typeof e2 ? e2 : e2 + "";
     }
@@ -199,8 +183,7 @@ interact_min.exports;
     }, string: function(t2) {
       return "string" == typeof t2;
     }, element: function(t2) {
-      if (!t2 || "object" !== n(t2))
-        return false;
+      if (!t2 || "object" !== n(t2)) return false;
       var e2 = y(t2) || g;
       return /object|function/.test("undefined" == typeof Element ? "undefined" : n(Element)) ? t2 instanceof Element || t2 instanceof e2.Element : 1 === t2.nodeType && "string" == typeof t2.nodeName;
     }, plainObject: function(t2) {
@@ -230,8 +213,7 @@ interact_min.exports;
       n2.prototype.draggable = S.draggable, e2.map.drag = S, e2.methodDict.drag = "draggable", r2.actions.drag = S.defaults;
     }, listeners: { "interactions:before-action-move": E, "interactions:action-resume": E, "interactions:action-move": T, "auto-start:check": function(t2) {
       var e2 = t2.interaction, n2 = t2.interactable, r2 = t2.buttons, i2 = n2.options.drag;
-      if (i2 && i2.enabled && (!e2.pointerIsDown || !/mouse|pointer/.test(e2.pointerType) || 0 != (r2 & n2.options.drag.mouseButtons)))
-        return t2.action = { name: "drag", axis: "start" === i2.lockAxis ? i2.startAxis : i2.lockAxis }, false;
+      if (i2 && i2.enabled && (!e2.pointerIsDown || !/mouse|pointer/.test(e2.pointerType) || 0 != (r2 & n2.options.drag.mouseButtons))) return t2.action = { name: "drag", axis: "start" === i2.lockAxis ? i2.startAxis : i2.lockAxis }, false;
     } }, draggable: function(t2) {
       return w.object(t2) ? (this.options.drag.enabled = false !== t2.enabled, this.setPerAction("drag", t2), this.setOnEvents("drag", t2), /^(xy|x|y|start)$/.test(t2.lockAxis) && (this.options.drag.lockAxis = t2.lockAxis), /^(xy|x|y)$/.test(t2.startAxis) && (this.options.drag.startAxis = t2.startAxis), this) : w.bool(t2) ? (this.options.drag.enabled = t2, this) : this.options.drag;
     }, beforeMove: E, move: T, defaults: { startAxis: "xy", lockAxis: "xy" }, getCursor: function() {
@@ -251,19 +233,16 @@ interact_min.exports;
     }, supportsTouch: null, supportsPointerEvent: null, isIOS7: null, isIOS: null, isIe9: null, isOperaMobile: null, prefixedMatchesSelector: null, pEventTypes: null, wheelEvent: null };
     var I = D;
     function M(t2, e2) {
-      if (t2.contains)
-        return t2.contains(e2);
+      if (t2.contains) return t2.contains(e2);
       for (; e2; ) {
-        if (e2 === t2)
-          return true;
+        if (e2 === t2) return true;
         e2 = e2.parentNode;
       }
       return false;
     }
     function z(t2, e2) {
       for (; w.element(t2); ) {
-        if (R(t2, e2))
-          return t2;
+        if (R(t2, e2)) return t2;
         t2 = A(t2);
       }
       return null;
@@ -271,8 +250,7 @@ interact_min.exports;
     function A(t2) {
       var e2 = t2.parentNode;
       if (w.docFrag(e2)) {
-        for (; (e2 = e2.host) && w.docFrag(e2); )
-          ;
+        for (; (e2 = e2.host) && w.docFrag(e2); ) ;
         return e2;
       }
       return e2;
@@ -284,16 +262,13 @@ interact_min.exports;
       return t2.parentNode || t2.host;
     };
     function j(t2, e2) {
-      for (var n2, r2 = [], i2 = t2; (n2 = C(i2)) && i2 !== e2 && n2 !== i2.ownerDocument; )
-        r2.unshift(i2), i2 = n2;
+      for (var n2, r2 = [], i2 = t2; (n2 = C(i2)) && i2 !== e2 && n2 !== i2.ownerDocument; ) r2.unshift(i2), i2 = n2;
       return r2;
     }
     function F(t2, e2, n2) {
       for (; w.element(t2); ) {
-        if (R(t2, e2))
-          return true;
-        if ((t2 = A(t2)) === n2)
-          return R(t2, e2);
+        if (R(t2, e2)) return true;
+        if ((t2 = A(t2)) === n2) return R(t2, e2);
       }
       return false;
     }
@@ -313,16 +288,14 @@ interact_min.exports;
       return n2;
     }
     function q(t2) {
-      for (var e2 = []; t2; )
-        e2.push(t2), t2 = A(t2);
+      for (var e2 = []; t2; ) e2.push(t2), t2 = A(t2);
       return e2;
     }
     function B(t2) {
       return !!w.string(t2) && (k.document.querySelector(t2), true);
     }
     function V(t2, e2) {
-      for (var n2 in e2)
-        t2[n2] = e2[n2];
+      for (var n2 in e2) t2[n2] = e2[n2];
       return t2;
     }
     function W(t2, e2, n2) {
@@ -349,23 +322,19 @@ interact_min.exports;
       var n2 = arguments.length > 2 && void 0 !== arguments[2] ? arguments[2] : function(t3) {
         return true;
       }, r2 = arguments.length > 3 ? arguments[3] : void 0;
-      if (r2 = r2 || {}, w.string(t2) && -1 !== t2.search(" ") && (t2 = J(t2)), w.array(t2))
-        return t2.forEach(function(t3) {
-          return $(t3, e2, n2, r2);
-        }), r2;
-      if (w.object(t2) && (e2 = t2, t2 = ""), w.func(e2) && n2(t2))
-        r2[t2] = r2[t2] || [], r2[t2].push(e2);
-      else if (w.array(e2))
-        for (var i2 = 0, o2 = e2; i2 < o2.length; i2++) {
-          var a2 = o2[i2];
-          $(t2, a2, n2, r2);
-        }
-      else if (w.object(e2))
-        for (var s2 in e2) {
-          $(J(s2).map(function(e3) {
-            return "".concat(t2).concat(e3);
-          }), e2[s2], n2, r2);
-        }
+      if (r2 = r2 || {}, w.string(t2) && -1 !== t2.search(" ") && (t2 = J(t2)), w.array(t2)) return t2.forEach(function(t3) {
+        return $(t3, e2, n2, r2);
+      }), r2;
+      if (w.object(t2) && (e2 = t2, t2 = ""), w.func(e2) && n2(t2)) r2[t2] = r2[t2] || [], r2[t2].push(e2);
+      else if (w.array(e2)) for (var i2 = 0, o2 = e2; i2 < o2.length; i2++) {
+        var a2 = o2[i2];
+        $(t2, a2, n2, r2);
+      }
+      else if (w.object(e2)) for (var s2 in e2) {
+        $(J(s2).map(function(e3) {
+          return "".concat(t2).concat(e3);
+        }), e2[s2], n2, r2);
+      }
       return r2;
     }
     function J(t2) {
@@ -379,16 +348,14 @@ interact_min.exports;
       var n2 = function(n3) {
         if (Z.some(function(t3) {
           return 0 === n3.indexOf(t3);
-        }))
-          return 1;
+        })) return 1;
         "function" != typeof t2[n3] && "__set" !== n3 && Object.defineProperty(t2, n3, { get: function() {
           return n3 in t2.__set ? t2.__set[n3] : t2.__set[n3] = e2[n3];
         }, set: function(e3) {
           t2.__set[n3] = e3;
         }, configurable: true });
       };
-      for (var r2 in e2)
-        n2(r2);
+      for (var r2 in e2) n2(r2);
       return t2;
     }
     function et(t2, e2) {
@@ -422,16 +389,13 @@ interact_min.exports;
     function lt(t2) {
       for (var e2 = { pageX: 0, pageY: 0, clientX: 0, clientY: 0, screenX: 0, screenY: 0 }, n2 = 0; n2 < t2.length; n2++) {
         var r2 = t2[n2];
-        for (var i2 in e2)
-          e2[i2] += r2[i2];
+        for (var i2 in e2) e2[i2] += r2[i2];
       }
-      for (var o2 in e2)
-        e2[o2] /= t2.length;
+      for (var o2 in e2) e2[o2] /= t2.length;
       return e2;
     }
     function ut(t2) {
-      if (!t2.length)
-        return null;
+      if (!t2.length) return null;
       var e2 = ct(t2), n2 = Math.min(e2[0].pageX, e2[1].pageX), r2 = Math.min(e2[0].pageY, e2[1].pageY), i2 = Math.max(e2[0].pageX, e2[1].pageX), o2 = Math.max(e2[0].pageY, e2[1].pageY);
       return { x: n2, y: r2, left: n2, top: r2, right: i2, bottom: o2, width: i2 - n2, height: o2 - r2 };
     }
@@ -474,9 +438,7 @@ interact_min.exports;
     }, mt = function(t2) {
       return gt([], t2);
     }, yt = function(t2, e2) {
-      for (var n2 = 0; n2 < t2.length; n2++)
-        if (e2(t2[n2], n2, t2))
-          return n2;
+      for (var n2 = 0; n2 < t2.length; n2++) if (e2(t2[n2], n2, t2)) return n2;
       return -1;
     }, bt = function(t2, e2) {
       return t2[yt(t2, e2)];
@@ -491,17 +453,15 @@ interact_min.exports;
       }
       return o(n2, [{ key: "reject", value: function() {
         var t3 = this, e3 = this._interaction.dropState;
-        if ("dropactivate" === this.type || this.dropzone && e3.cur.dropzone === this.dropzone && e3.cur.element === this.target)
-          if (e3.prev.dropzone = this.dropzone, e3.prev.element = this.target, e3.rejected = true, e3.events.enter = null, this.stopImmediatePropagation(), "dropactivate" === this.type) {
-            var r2 = e3.activeDrops, i2 = yt(r2, function(e4) {
-              var n3 = e4.dropzone, r3 = e4.element;
-              return n3 === t3.dropzone && r3 === t3.target;
-            });
-            e3.activeDrops.splice(i2, 1);
-            var o2 = new n2(e3, this.dragEvent, "dropdeactivate");
-            o2.dropzone = this.dropzone, o2.target = this.target, this.dropzone.fire(o2);
-          } else
-            this.dropzone.fire(new n2(e3, this.dragEvent, "dragleave"));
+        if ("dropactivate" === this.type || this.dropzone && e3.cur.dropzone === this.dropzone && e3.cur.element === this.target) if (e3.prev.dropzone = this.dropzone, e3.prev.element = this.target, e3.rejected = true, e3.events.enter = null, this.stopImmediatePropagation(), "dropactivate" === this.type) {
+          var r2 = e3.activeDrops, i2 = yt(r2, function(e4) {
+            var n3 = e4.dropzone, r3 = e4.element;
+            return n3 === t3.dropzone && r3 === t3.target;
+          });
+          e3.activeDrops.splice(i2, 1);
+          var o2 = new n2(e3, this.dragEvent, "dropdeactivate");
+          o2.dropzone = this.dropzone, o2.target = this.target, this.dropzone.fire(o2);
+        } else this.dropzone.fire(new n2(e3, this.dragEvent, "dragleave"));
       } }, { key: "preventDefault", value: function() {
       } }, { key: "stopPropagation", value: function() {
         this.propagationStopped = true;
@@ -521,11 +481,10 @@ interact_min.exports;
           var o2 = i3[r3];
           if (o2.options.drop.enabled) {
             var a2 = o2.options.drop.accept;
-            if (!(w.element(a2) && a2 !== e3 || w.string(a2) && !R(e3, a2) || w.func(a2) && !a2({ dropzone: o2, draggableElement: e3 })))
-              for (var s2 = 0, c2 = o2.getAllElements(); s2 < c2.length; s2++) {
-                var l2 = c2[s2];
-                l2 !== e3 && n3.push({ dropzone: o2, element: l2, rect: o2.getRect(l2) });
-              }
+            if (!(w.element(a2) && a2 !== e3 || w.string(a2) && !R(e3, a2) || w.func(a2) && !a2({ dropzone: o2, draggableElement: e3 }))) for (var s2 = 0, c2 = o2.getAllElements(); s2 < c2.length; s2++) {
+              var l2 = c2[s2];
+              l2 !== e3 && n3.push({ dropzone: o2, element: l2, rect: o2.getRect(l2) });
+            }
           }
         }
         return n3;
@@ -543,39 +502,28 @@ interact_min.exports;
       var h2 = function(t3) {
         for (var e3, n3, r3, i3 = [], o3 = 0; o3 < t3.length; o3++) {
           var a3 = t3[o3], s3 = t3[e3];
-          if (a3 && o3 !== e3)
-            if (s3) {
-              var c3 = C(a3), l3 = C(s3);
-              if (c3 !== a3.ownerDocument)
-                if (l3 !== a3.ownerDocument)
-                  if (c3 !== l3) {
-                    i3 = i3.length ? i3 : j(s3);
-                    var u3 = void 0;
-                    if (s3 instanceof k.HTMLElement && a3 instanceof k.SVGElement && !(a3 instanceof k.SVGSVGElement)) {
-                      if (a3 === l3)
-                        continue;
-                      u3 = a3.ownerSVGElement;
-                    } else
-                      u3 = a3;
-                    for (var p3 = j(u3, s3.ownerDocument), f3 = 0; p3[f3] && p3[f3] === i3[f3]; )
-                      f3++;
-                    var d3 = [p3[f3 - 1], p3[f3], i3[f3]];
-                    if (d3[0])
-                      for (var h3 = d3[0].lastChild; h3; ) {
-                        if (h3 === d3[1]) {
-                          e3 = o3, i3 = p3;
-                          break;
-                        }
-                        if (h3 === d3[2])
-                          break;
-                        h3 = h3.previousSibling;
-                      }
-                  } else
-                    r3 = s3, (parseInt(y(n3 = a3).getComputedStyle(n3).zIndex, 10) || 0) >= (parseInt(y(r3).getComputedStyle(r3).zIndex, 10) || 0) && (e3 = o3);
-                else
-                  e3 = o3;
-            } else
-              e3 = o3;
+          if (a3 && o3 !== e3) if (s3) {
+            var c3 = C(a3), l3 = C(s3);
+            if (c3 !== a3.ownerDocument) if (l3 !== a3.ownerDocument) if (c3 !== l3) {
+              i3 = i3.length ? i3 : j(s3);
+              var u3 = void 0;
+              if (s3 instanceof k.HTMLElement && a3 instanceof k.SVGElement && !(a3 instanceof k.SVGSVGElement)) {
+                if (a3 === l3) continue;
+                u3 = a3.ownerSVGElement;
+              } else u3 = a3;
+              for (var p3 = j(u3, s3.ownerDocument), f3 = 0; p3[f3] && p3[f3] === i3[f3]; ) f3++;
+              var d3 = [p3[f3 - 1], p3[f3], i3[f3]];
+              if (d3[0]) for (var h3 = d3[0].lastChild; h3; ) {
+                if (h3 === d3[1]) {
+                  e3 = o3, i3 = p3;
+                  break;
+                }
+                if (h3 === d3[2]) break;
+                h3 = h3.previousSibling;
+              }
+            } else r3 = s3, (parseInt(y(n3 = a3).getComputedStyle(n3).zIndex, 10) || 0) >= (parseInt(y(r3).getComputedStyle(r3).zIndex, 10) || 0) && (e3 = o3);
+            else e3 = o3;
+          } else e3 = o3;
         }
         return e3;
       }(a2);
@@ -611,15 +559,13 @@ interact_min.exports;
             }
             return w.func(e3.ondrop) && t4.on("drop", e3.ondrop), w.func(e3.ondropactivate) && t4.on("dropactivate", e3.ondropactivate), w.func(e3.ondropdeactivate) && t4.on("dropdeactivate", e3.ondropdeactivate), w.func(e3.ondragenter) && t4.on("dragenter", e3.ondragenter), w.func(e3.ondragleave) && t4.on("dragleave", e3.ondragleave), w.func(e3.ondropmove) && t4.on("dropmove", e3.ondropmove), /^(pointer|center)$/.test(e3.overlap) ? t4.options.drop.overlap = e3.overlap : w.number(e3.overlap) && (t4.options.drop.overlap = Math.max(Math.min(1, e3.overlap), 0)), "accept" in e3 && (t4.options.drop.accept = e3.accept), "checker" in e3 && (t4.options.drop.checker = e3.checker), t4;
           }
-          if (w.bool(e3))
-            return t4.options.drop.enabled = e3, t4;
+          if (w.bool(e3)) return t4.options.drop.enabled = e3, t4;
           return t4.options.drop;
         }(this, t3);
       }, r2.prototype.dropCheck = function(t3, e3, n3, r3, i3, o2) {
         return function(t4, e4, n4, r4, i4, o3, a2) {
           var s2 = false;
-          if (!(a2 = a2 || t4.getRect(o3)))
-            return !!t4.options.drop.checker && t4.options.drop.checker(e4, n4, s2, t4, o3, r4, i4);
+          if (!(a2 = a2 || t4.getRect(o3))) return !!t4.options.drop.checker && t4.options.drop.checker(e4, n4, s2, t4, o3, r4, i4);
           var c2 = t4.options.drop.overlap;
           if ("pointer" === c2) {
             var l2 = K(r4, i4, "drag"), u2 = ot(e4);
@@ -676,13 +622,11 @@ interact_min.exports;
         var i2 = e2.pointers.map(function(t3) {
           return t3.pointer;
         }), o2 = "start" === r2, a2 = "end" === r2, s2 = e2.interactable.options.deltaSource;
-        if (n2.touches = [i2[0], i2[1]], o2)
-          n2.distance = pt(i2, s2), n2.box = ut(i2), n2.scale = 1, n2.ds = 0, n2.angle = ft(i2, s2), n2.da = 0, e2.gesture.startDistance = n2.distance, e2.gesture.startAngle = n2.angle;
+        if (n2.touches = [i2[0], i2[1]], o2) n2.distance = pt(i2, s2), n2.box = ut(i2), n2.scale = 1, n2.ds = 0, n2.angle = ft(i2, s2), n2.da = 0, e2.gesture.startDistance = n2.distance, e2.gesture.startAngle = n2.angle;
         else if (a2 || e2.pointers.length < 2) {
           var c2 = e2.prevEvent;
           n2.distance = c2.distance, n2.box = c2.box, n2.scale = c2.scale, n2.ds = 0, n2.angle = c2.angle, n2.da = 0;
-        } else
-          n2.distance = pt(i2, s2), n2.box = ut(i2), n2.scale = n2.distance / e2.gesture.startDistance, n2.angle = ft(i2, s2), n2.ds = n2.scale - e2.gesture.scale, n2.da = n2.angle - e2.gesture.angle;
+        } else n2.distance = pt(i2, s2), n2.box = ut(i2), n2.scale = n2.distance / e2.gesture.startDistance, n2.angle = ft(i2, s2), n2.ds = n2.scale - e2.gesture.scale, n2.da = n2.angle - e2.gesture.angle;
         e2.gesture.distance = n2.distance, e2.gesture.angle = n2.angle, w.number(n2.scale) && n2.scale !== 1 / 0 && !isNaN(n2.scale) && (e2.gesture.scale = n2.scale);
       }
     }
@@ -696,8 +640,7 @@ interact_min.exports;
     }, "auto-start:check": function(t2) {
       if (!(t2.interaction.pointers.length < 2)) {
         var e2 = t2.interactable.options.gesture;
-        if (e2 && e2.enabled)
-          return t2.action = { name: "gesture" }, false;
+        if (e2 && e2.enabled) return t2.action = { name: "gesture" }, false;
       }
     } }, defaults: {}, getCursor: function() {
       return "";
@@ -705,8 +648,7 @@ interact_min.exports;
       return 0 === t2.search("gesture");
     } }, Mt = It;
     function zt(t2, e2, n2, r2, i2, o2, a2) {
-      if (!e2)
-        return false;
+      if (!e2) return false;
       if (true === e2) {
         var s2 = w.number(o2.width) ? o2.width : o2.right - o2.left, c2 = w.number(o2.height) ? o2.height : o2.bottom - o2.top;
         if (a2 = Math.min(a2, Math.abs(("left" === t2 || "right" === t2 ? s2 : c2) / 2)), s2 < 0 && ("left" === t2 ? t2 = "right" : "right" === t2 && (t2 = "left")), c2 < 0 && ("top" === t2 ? t2 = "bottom" : "bottom" === t2 && (t2 = "top")), "left" === t2) {
@@ -717,10 +659,8 @@ interact_min.exports;
           var u2 = c2 >= 0 ? o2.top : o2.bottom;
           return n2.y < u2 + a2;
         }
-        if ("right" === t2)
-          return n2.x > (s2 >= 0 ? o2.right : o2.left) - a2;
-        if ("bottom" === t2)
-          return n2.y > (c2 >= 0 ? o2.bottom : o2.top) - a2;
+        if ("right" === t2) return n2.x > (s2 >= 0 ? o2.right : o2.left) - a2;
+        if ("bottom" === t2) return n2.y > (c2 >= 0 ? o2.bottom : o2.top) - a2;
       }
       return !!w.element(r2) && (w.element(e2) ? e2 === r2 : F(r2, e2, i2));
     }
@@ -737,10 +677,8 @@ interact_min.exports;
         return t3.isIe9 ? { x: "e-resize", y: "s-resize", xy: "se-resize", top: "n-resize", left: "w-resize", bottom: "s-resize", right: "e-resize", topleft: "se-resize", bottomright: "se-resize", topright: "ne-resize", bottomleft: "ne-resize" } : { x: "ew-resize", y: "ns-resize", xy: "nwse-resize", top: "ns-resize", left: "ew-resize", bottom: "ns-resize", right: "ew-resize", topleft: "nwse-resize", bottomright: "nwse-resize", topright: "nesw-resize", bottomleft: "nesw-resize" };
       }(n2), jt.defaultMargin = n2.supportsTouch || n2.supportsPointerEvent ? 20 : 10, r2.prototype.resizable = function(e3) {
         return function(t3, e4, n3) {
-          if (w.object(e4))
-            return t3.options.resize.enabled = false !== e4.enabled, t3.setPerAction("resize", e4), t3.setOnEvents("resize", e4), w.string(e4.axis) && /^x$|^y$|^xy$/.test(e4.axis) ? t3.options.resize.axis = e4.axis : null === e4.axis && (t3.options.resize.axis = n3.defaults.actions.resize.axis), w.bool(e4.preserveAspectRatio) ? t3.options.resize.preserveAspectRatio = e4.preserveAspectRatio : w.bool(e4.square) && (t3.options.resize.square = e4.square), t3;
-          if (w.bool(e4))
-            return t3.options.resize.enabled = e4, t3;
+          if (w.object(e4)) return t3.options.resize.enabled = false !== e4.enabled, t3.setPerAction("resize", e4), t3.setOnEvents("resize", e4), w.string(e4.axis) && /^x$|^y$|^xy$/.test(e4.axis) ? t3.options.resize.axis = e4.axis : null === e4.axis && (t3.options.resize.axis = n3.defaults.actions.resize.axis), w.bool(e4.preserveAspectRatio) ? t3.options.resize.preserveAspectRatio = e4.preserveAspectRatio : w.bool(e4.square) && (t3.options.resize.square = e4.square), t3;
+          if (w.bool(e4)) return t3.options.resize.enabled = e4, t3;
           return t3.options.resize;
         }(this, e3, t2);
       }, e2.map.resize = jt, e2.methodDict.resize = "resizable", i2.actions.resize = jt.defaults;
@@ -770,10 +708,8 @@ interact_min.exports;
                 l2.left = l2.right, l2.right = d2;
               }
             }
-          } else
-            l2.top = Math.min(a2.top, c2.bottom), l2.bottom = Math.max(a2.bottom, c2.top), l2.left = Math.min(a2.left, c2.right), l2.right = Math.max(a2.right, c2.left);
-          for (var h2 in l2.width = l2.right - l2.left, l2.height = l2.bottom - l2.top, l2)
-            u2[h2] = l2[h2] - p2[h2];
+          } else l2.top = Math.min(a2.top, c2.bottom), l2.bottom = Math.max(a2.bottom, c2.top), l2.left = Math.min(a2.left, c2.right), l2.right = Math.max(a2.right, c2.left);
+          for (var h2 in l2.width = l2.right - l2.left, l2.height = l2.bottom - l2.top, l2) u2[h2] = l2[h2] - p2[h2];
           r2.edges = n2.prepared.edges, r2.rect = l2, r2.deltaRect = u2;
         }
       }(t2), At(t2);
@@ -790,8 +726,7 @@ interact_min.exports;
         if (s2 && s2.enabled && (!e2.pointerIsDown || !/mouse|pointer/.test(e2.pointerType) || 0 != (o2 & s2.mouseButtons))) {
           if (w.object(s2.edges)) {
             var c2 = { left: false, right: false, top: false, bottom: false };
-            for (var l2 in c2)
-              c2[l2] = zt(l2, s2.edges[l2], a2, e2._latestPointer.eventTarget, r2, i2, s2.margin || jt.defaultMargin);
+            for (var l2 in c2) c2[l2] = zt(l2, s2.edges[l2], a2, e2._latestPointer.eventTarget, r2, i2, s2.margin || jt.defaultMargin);
             c2.left = c2.left && !c2.right, c2.top = c2.top && !c2.bottom, (c2.left || c2.right || c2.top || c2.bottom) && (t2.action = { name: "resize", edges: c2 });
           } else {
             var u2 = "y" !== s2.axis && a2.x > i2.right - jt.defaultMargin, p2 = "x" !== s2.axis && a2.y > i2.bottom - jt.defaultMargin;
@@ -802,8 +737,7 @@ interact_min.exports;
       }
     } }, defaults: { square: false, preserveAspectRatio: false, axis: "xy", margin: NaN, edges: null, invert: "none" }, cursors: null, getCursor: function(t2) {
       var e2 = t2.edges, n2 = t2.axis, r2 = t2.name, i2 = jt.cursors, o2 = null;
-      if (n2)
-        o2 = i2[r2 + n2];
+      if (n2) o2 = i2[r2 + n2];
       else if (e2) {
         for (var a2 = "", s2 = 0, c2 = ["top", "bottom", "left", "right"]; s2 < c2.length; s2++) {
           var l2 = c2[s2];
@@ -822,11 +756,10 @@ interact_min.exports;
     }, cancel: function(t2) {
       return Ct(t2);
     }, init: function(t2) {
-      if (Rt = t2.requestAnimationFrame, Ct = t2.cancelAnimationFrame, !Rt)
-        for (var e2 = ["ms", "moz", "webkit", "o"], n2 = 0; n2 < e2.length; n2++) {
-          var r2 = e2[n2];
-          Rt = t2["".concat(r2, "RequestAnimationFrame")], Ct = t2["".concat(r2, "CancelAnimationFrame")] || t2["".concat(r2, "CancelRequestAnimationFrame")];
-        }
+      if (Rt = t2.requestAnimationFrame, Ct = t2.cancelAnimationFrame, !Rt) for (var e2 = ["ms", "moz", "webkit", "o"], n2 = 0; n2 < e2.length; n2++) {
+        var r2 = e2[n2];
+        Rt = t2["".concat(r2, "RequestAnimationFrame")], Ct = t2["".concat(r2, "CancelAnimationFrame")] || t2["".concat(r2, "CancelRequestAnimationFrame")];
+      }
       Rt = Rt && Rt.bind(t2), Ct = Ct && Ct.bind(t2), Rt || (Rt = function(e3) {
         var n3 = Date.now(), r3 = Math.max(0, 16 - (n3 - Yt)), i2 = t2.setTimeout(function() {
           e3(n3 + r3);
@@ -858,19 +791,16 @@ interact_min.exports;
       return null == (n2 = t2.options[e2].autoScroll) ? void 0 : n2.enabled;
     }, onInteractionMove: function(t2) {
       var e2 = t2.interaction, n2 = t2.pointer;
-      if (e2.interacting() && qt.check(e2.interactable, e2.prepared.name))
-        if (e2.simulation)
-          qt.x = qt.y = 0;
+      if (e2.interacting() && qt.check(e2.interactable, e2.prepared.name)) if (e2.simulation) qt.x = qt.y = 0;
+      else {
+        var r2, i2, o2, a2, s2 = e2.interactable, c2 = e2.element, l2 = e2.prepared.name, u2 = s2.options[l2].autoScroll, p2 = Bt(u2.container, s2, c2);
+        if (w.window(p2)) a2 = n2.clientX < qt.margin, r2 = n2.clientY < qt.margin, i2 = n2.clientX > p2.innerWidth - qt.margin, o2 = n2.clientY > p2.innerHeight - qt.margin;
         else {
-          var r2, i2, o2, a2, s2 = e2.interactable, c2 = e2.element, l2 = e2.prepared.name, u2 = s2.options[l2].autoScroll, p2 = Bt(u2.container, s2, c2);
-          if (w.window(p2))
-            a2 = n2.clientX < qt.margin, r2 = n2.clientY < qt.margin, i2 = n2.clientX > p2.innerWidth - qt.margin, o2 = n2.clientY > p2.innerHeight - qt.margin;
-          else {
-            var f2 = Y(p2);
-            a2 = n2.clientX < f2.left + qt.margin, r2 = n2.clientY < f2.top + qt.margin, i2 = n2.clientX > f2.right - qt.margin, o2 = n2.clientY > f2.bottom - qt.margin;
-          }
-          qt.x = i2 ? 1 : a2 ? -1 : 0, qt.y = o2 ? 1 : r2 ? -1 : 0, qt.isScrolling || (qt.margin = u2.margin, qt.speed = u2.speed, qt.start(e2));
+          var f2 = Y(p2);
+          a2 = n2.clientX < f2.left + qt.margin, r2 = n2.clientY < f2.top + qt.margin, i2 = n2.clientX > f2.right - qt.margin, o2 = n2.clientY > f2.bottom - qt.margin;
         }
+        qt.x = i2 ? 1 : a2 ? -1 : 0, qt.y = o2 ? 1 : r2 ? -1 : 0, qt.isScrolling || (qt.margin = u2.margin, qt.speed = u2.speed, qt.start(e2));
+      }
     } };
     function Bt(t2, e2, n2) {
       return (w.string(t2) ? W(t2, e2, n2) : t2) || y(n2);
@@ -927,8 +857,7 @@ interact_min.exports;
         var l2 = r2[s2], u2 = i2[s2], p2 = l2.getAction(e2, n2, t2, u2);
         if (p2) {
           var f2 = Jt(p2, l2, u2, o2, a2);
-          if (f2)
-            return { action: f2, interactable: l2, element: u2 };
+          if (f2) return { action: f2, interactable: l2, element: u2 };
         }
       }
       return { action: null, interactable: null, element: null };
@@ -941,8 +870,7 @@ interact_min.exports;
       for (; w.element(s2); ) {
         o2 = [], a2 = [], i2.interactables.forEachMatch(s2, c2);
         var l2 = Qt(t2, e2, n2, o2, a2, r2, i2);
-        if (l2.action && !l2.interactable.options[l2.action.name].manualStart)
-          return l2;
+        if (l2.action && !l2.interactable.options[l2.action.name].manualStart) return l2;
         s2 = A(s2);
       }
       return { action: null, interactable: null, element: null };
@@ -953,18 +881,14 @@ interact_min.exports;
     }
     function ee(t2, e2, n2, r2) {
       var i2 = t2.options, o2 = i2[n2.name].max, a2 = i2[n2.name].maxPerElement, s2 = r2.autoStart.maxInteractions, c2 = 0, l2 = 0, u2 = 0;
-      if (!(o2 && a2 && s2))
-        return false;
+      if (!(o2 && a2 && s2)) return false;
       for (var p2 = 0, f2 = r2.interactions.list; p2 < f2.length; p2++) {
         var d2 = f2[p2], h2 = d2.prepared.name;
         if (d2.interacting()) {
-          if (++c2 >= s2)
-            return false;
+          if (++c2 >= s2) return false;
           if (d2.interactable === t2) {
-            if ((l2 += h2 === n2.name ? 1 : 0) >= o2)
-              return false;
-            if (d2.element === e2 && (u2++, h2 === n2.name && u2 >= a2))
-              return false;
+            if ((l2 += h2 === n2.name ? 1 : 0) >= o2) return false;
+            if (d2.element === e2 && (u2++, h2 === n2.name && u2 >= a2)) return false;
           }
         }
       }
@@ -986,8 +910,7 @@ interact_min.exports;
           o2 = w.func(a2) ? a2(i2, n2, r2, t2._interacting) : e2.actions.map[i2.name].getCursor(i2);
         }
         re(t2.element, o2 || "", e2);
-      } else
-        e2.autoStart.cursorElement && re(e2.autoStart.cursorElement, "", e2);
+      } else e2.autoStart.cursorElement && re(e2.autoStart.cursorElement, "", e2);
     }
     var oe = { id: "auto-start/base", before: ["actions"], install: function(t2) {
       var e2 = t2.interactStatic, n2 = t2.defaults;
@@ -1025,12 +948,10 @@ interact_min.exports;
               if (!i3.manualStart && t3.testIgnoreAllow(i3, p2, r2)) {
                 var o3 = t3.getAction(n2.downPointer, n2.downEvent, n2, p2);
                 if (o3 && "drag" === o3.name && function(t4, e3) {
-                  if (!e3)
-                    return false;
+                  if (!e3) return false;
                   var n3 = e3.options.drag.startAxis;
                   return "xy" === t4 || "xy" === n3 || n3 === t4;
-                }(u2, t3) && ae.validateAction(o3, t3, p2, r2, e2))
-                  return t3;
+                }(u2, t3) && ae.validateAction(o3, t3, p2, r2, e2)) return t3;
               }
             }
           }; w.element(p2); ) {
@@ -1046,8 +967,7 @@ interact_min.exports;
     } } };
     function ce(t2) {
       var e2 = t2.prepared && t2.prepared.name;
-      if (!e2)
-        return null;
+      if (!e2) return null;
       var n2 = t2.interactable.options;
       return n2[e2].hold || n2[e2].delay;
     }
@@ -1081,33 +1001,26 @@ interact_min.exports;
       e2.prototype.preventDefault = fe, e2.prototype.checkAndPreventDefault = function(e3) {
         return function(t3, e4, n2) {
           var r2 = t3.options.preventDefault;
-          if ("never" !== r2)
-            if ("always" !== r2) {
-              if (e4.events.supportsPassive && /^touch(start|move)$/.test(n2.type)) {
-                var i2 = y(n2.target).document, o2 = e4.getDocOptions(i2);
-                if (!o2 || !o2.events || false !== o2.events.passive)
-                  return;
-              }
-              /^(mouse|pointer|touch)*(down|start)/i.test(n2.type) || w.element(n2.target) && R(n2.target, "input,select,textarea,[contenteditable=true],[contenteditable=true] *") || n2.preventDefault();
-            } else
-              n2.preventDefault();
+          if ("never" !== r2) if ("always" !== r2) {
+            if (e4.events.supportsPassive && /^touch(start|move)$/.test(n2.type)) {
+              var i2 = y(n2.target).document, o2 = e4.getDocOptions(i2);
+              if (!o2 || !o2.events || false !== o2.events.passive) return;
+            }
+            /^(mouse|pointer|touch)*(down|start)/i.test(n2.type) || w.element(n2.target) && R(n2.target, "input,select,textarea,[contenteditable=true],[contenteditable=true] *") || n2.preventDefault();
+          } else n2.preventDefault();
         }(this, t2, e3);
       }, t2.interactions.docEvents.push({ type: "dragstart", listener: function(e3) {
         for (var n2 = 0, r2 = t2.interactions.list; n2 < r2.length; n2++) {
           var i2 = r2[n2];
-          if (i2.element && (i2.element === e3.target || M(i2.element, e3.target)))
-            return void i2.interactable.checkAndPreventDefault(e3);
+          if (i2.element && (i2.element === e3.target || M(i2.element, e3.target))) return void i2.interactable.checkAndPreventDefault(e3);
         }
       } });
     }, listeners: ["down", "move", "up", "cancel"].reduce(function(t2, e2) {
       return t2["interactions:".concat(e2)] = de, t2;
     }, {}) };
     function ve(t2, e2) {
-      if (e2.phaselessTypes[t2])
-        return true;
-      for (var n2 in e2.map)
-        if (0 === t2.indexOf(n2) && t2.substr(n2.length) in e2.phases)
-          return true;
+      if (e2.phaselessTypes[t2]) return true;
+      for (var n2 in e2.map) if (0 === t2.indexOf(n2) && t2.substr(n2.length) in e2.phases) return true;
       return false;
     }
     function ge(t2) {
@@ -1125,8 +1038,7 @@ interact_min.exports;
       return o(t2, [{ key: "start", value: function(t3, e2) {
         var n2, r2, i2 = t3.phase, o2 = this.interaction, a2 = function(t4) {
           var e3 = t4.interactable.options[t4.prepared.name], n3 = e3.modifiers;
-          if (n3 && n3.length)
-            return n3;
+          if (n3 && n3.length) return n3;
           return ["snap", "snapSize", "snapEdges", "restrict", "restrictEdges", "restrictSize"].map(function(t5) {
             var n4 = e3[t5];
             return n4 && n4.enabled && { options: n4, methods: n4._methods };
@@ -1170,8 +1082,7 @@ interact_min.exports;
         h2.left += d2.left, h2.right += d2.right, h2.top += d2.top, h2.bottom += d2.bottom, h2.width = h2.right - h2.left, h2.height = h2.bottom - h2.top;
       } }, { key: "setAndApply", value: function(t3) {
         var e2 = this.interaction, n2 = t3.phase, r2 = t3.preEnd, i2 = t3.skipModifiers, o2 = this.setAll(this.fillArg({ preEnd: r2, phase: n2, pageCoords: t3.modifiedCoords || e2.coords.cur.page }));
-        if (this.result = o2, !o2.changed && (!i2 || i2 < this.states.length) && e2.interacting())
-          return false;
+        if (this.result = o2, !o2.changed && (!i2 || i2 < this.states.length) && e2.interacting()) return false;
         if (t3.modifiedCoords) {
           var a2 = e2.coords.cur.page, s2 = { x: t3.modifiedCoords.x - a2.x, y: t3.modifiedCoords.y - a2.y };
           o2.coords.x += s2.x, o2.coords.y += s2.y, o2.delta.x += s2.x, o2.delta.y += s2.y;
@@ -1184,8 +1095,7 @@ interact_min.exports;
             var a2 = r2[o2];
             t3.state = a2;
             var s2 = a2.options, c2 = a2.methods, l2 = c2.beforeEnd && c2.beforeEnd(t3);
-            if (l2)
-              return this.endResult = l2, false;
+            if (l2) return this.endResult = l2, false;
             i2 = i2 || !i2 && this.shouldDo(s2, true, t3.phase, true);
           }
           i2 && e2.move({ event: n2, preEnd: true });
@@ -1224,8 +1134,7 @@ interact_min.exports;
           return ge(t4);
         }), this.result = ye(V({}, t3.result.coords), V({}, t3.result.rect));
       } }, { key: "destroy", value: function() {
-        for (var t3 in this)
-          this[t3] = null;
+        for (var t3 in this) this[t3] = null;
       } }]), t2;
     }();
     function ye(t2, e2) {
@@ -1234,8 +1143,7 @@ interact_min.exports;
     function be(t2, e2) {
       var n2 = t2.defaults, r2 = { start: t2.start, set: t2.set, beforeEnd: t2.beforeEnd, stop: t2.stop }, i2 = function(t3) {
         var i3 = t3 || {};
-        for (var o2 in i3.enabled = false !== i3.enabled, n2)
-          o2 in i3 || (i3[o2] = n2[o2]);
+        for (var o2 in i3.enabled = false !== i3.enabled, n2) o2 in i3 || (i3[o2] = n2[o2]);
         var a2 = { options: i3, methods: r2, name: e2, enable: function() {
           return i3.enabled = true, a2;
         }, disable: function() {
@@ -1280,8 +1188,7 @@ interact_min.exports;
       }
       return o(n2, [{ key: "getSwipe", value: function() {
         var t3 = this._interaction;
-        if (t3.prevEvent.speed < 600 || this.timeStamp - t3.prevEvent.timeStamp > 150)
-          return null;
+        if (t3.prevEvent.speed < 600 || this.timeStamp - t3.prevEvent.timeStamp > 150) return null;
         var e3 = 180 * Math.atan2(t3.prevEvent.velocityY, t3.prevEvent.velocityX) / Math.PI;
         e3 < 0 && (e3 += 360);
         var n3 = 112.5 <= e3 && e3 < 247.5, r2 = 202.5 <= e3 && e3 < 337.5;
@@ -1345,15 +1252,13 @@ interact_min.exports;
             return a2[t3];
           } });
         };
-        for (var c2 in Pe)
-          s2(c2);
+        for (var c2 in Pe) s2(c2);
         var l2 = function(t3) {
           Object.defineProperty(n2._proxy, t3, { value: function() {
             return a2[t3].apply(a2, arguments);
           } });
         };
-        for (var u2 in Oe)
-          l2(u2);
+        for (var u2 in Oe) l2(u2);
         this._scopeFire("interactions:new", { interaction: this });
       }
       return o(t2, [{ key: "pointerMoveTolerance", get: function() {
@@ -1416,8 +1321,7 @@ interact_min.exports;
         null == (e2 = this.interactable) || e2.fire(t3), (!this.prevEvent || t3.timeStamp >= this.prevEvent.timeStamp) && (this.prevEvent = t3);
       } }, { key: "_doPhase", value: function(t3) {
         var e2 = t3.event, n2 = t3.phase, r2 = t3.preEnd, i2 = t3.type, o2 = this.rect;
-        if (o2 && "move" === n2 && (H(this.edges, o2, this.coords.delta[this.interactable.options.deltaSource]), o2.width = o2.right - o2.left, o2.height = o2.bottom - o2.top), false === this._scopeFire("interactions:before-action-".concat(n2), t3))
-          return false;
+        if (o2 && "move" === n2 && (H(this.edges, o2, this.coords.delta[this.interactable.options.deltaSource]), o2.width = o2.right - o2.left, o2.height = o2.bottom - o2.top), false === this._scopeFire("interactions:before-action-".concat(n2), t3)) return false;
         var a2 = t3.iEvent = this._createPreparedEvent(e2, n2, r2, i2);
         return this._scopeFire("interactions:action-".concat(n2), t3), "start" === n2 && (this.prevEvent = a2), this._fireEvent(a2), this._scopeFire("interactions:after-action-".concat(n2), t3), true;
       } }, { key: "_now", value: function() {
@@ -1430,8 +1334,7 @@ interact_min.exports;
     function Me(t2) {
       if (!function(t3) {
         return !(!t3.offset.pending.x && !t3.offset.pending.y);
-      }(t2))
-        return false;
+      }(t2)) return false;
       var e2 = t2.offset.pending;
       return Ae(t2.coords.cur, e2), Ae(t2.coords.delta, e2), H(t2.edges, t2.rect, e2), e2.x = 0, e2.y = 0, true;
     }
@@ -1454,8 +1357,7 @@ interact_min.exports;
       }(t2.interaction);
     }, "interactions:before-action-start": Ie, "interactions:before-action-move": Ie, "interactions:before-action-end": function(t2) {
       var e2 = t2.interaction;
-      if (Me(e2))
-        return e2.move({ offset: true }), e2.end(), false;
+      if (Me(e2)) return e2.move({ offset: true }), e2.end(), false;
     }, "interactions:stop": function(t2) {
       var e2 = t2.interaction;
       e2.offset.total.x = 0, e2.offset.total.y = 0, e2.offset.pending.x = 0, e2.offset.pending.y = 0;
@@ -1466,14 +1368,11 @@ interact_min.exports;
       }
       return o(t2, [{ key: "start", value: function(t3) {
         var e2 = this.interaction, n2 = Fe(e2);
-        if (!n2 || !n2.enabled)
-          return false;
+        if (!n2 || !n2.enabled) return false;
         var r2 = e2.coords.velocity.client, i2 = Q(r2.x, r2.y), o2 = this.modification || (this.modification = new me(e2));
-        if (o2.copyFrom(e2.modification), this.t0 = e2._now(), this.allowResume = n2.allowResume, this.v0 = i2, this.currentOffset = { x: 0, y: 0 }, this.startCoords = e2.coords.cur.page, this.modifierArg = o2.fillArg({ pageCoords: this.startCoords, preEnd: true, phase: "inertiastart" }), this.t0 - e2.coords.cur.timeStamp < 50 && i2 > n2.minSpeed && i2 > n2.endSpeed)
-          this.startInertia();
+        if (o2.copyFrom(e2.modification), this.t0 = e2._now(), this.allowResume = n2.allowResume, this.v0 = i2, this.currentOffset = { x: 0, y: 0 }, this.startCoords = e2.coords.cur.page, this.modifierArg = o2.fillArg({ pageCoords: this.startCoords, preEnd: true, phase: "inertiastart" }), this.t0 - e2.coords.cur.timeStamp < 50 && i2 > n2.minSpeed && i2 > n2.endSpeed) this.startInertia();
         else {
-          if (o2.result = o2.setAll(this.modifierArg), !o2.result.changed)
-            return false;
+          if (o2.result = o2.setAll(this.modifierArg), !o2.result.changed) return false;
           this.startSmoothEnd();
         }
         return e2.modification.result.rect = null, e2.offsetBy(this.targetOffset), e2._doPhase({ interaction: e2, event: t3, phase: "inertiastart" }), e2.offsetBy({ x: -this.targetOffset.x, y: -this.targetOffset.y }), e2.modification.result.rect = null, this.active = true, e2.simulation = this, true;
@@ -1503,8 +1402,7 @@ interact_min.exports;
           this.currentOffset.x += d2.x, this.currentOffset.y += d2.y, c2.offsetBy(d2), c2.move(), this.onNextFrame(function() {
             return s2.inertiaTick();
           });
-        } else
-          c2.offsetBy({ x: this.modifiedOffset.x - this.currentOffset.x, y: this.modifiedOffset.y - this.currentOffset.y }), this.end();
+        } else c2.offsetBy({ x: this.modifiedOffset.x - this.currentOffset.x, y: this.modifiedOffset.y - this.currentOffset.y }), this.end();
       } }, { key: "smoothEndTick", value: function() {
         var t3 = this, e2 = this.interaction, n2 = e2._now() - this.t0, r2 = Fe(e2).smoothEndDuration;
         if (n2 < r2) {
@@ -1512,8 +1410,7 @@ interact_min.exports;
           this.currentOffset.x += o2.x, this.currentOffset.y += o2.y, e2.offsetBy(o2), e2.move({ skipModifiers: this.modifierCount }), this.onNextFrame(function() {
             return t3.smoothEndTick();
           });
-        } else
-          e2.offsetBy({ x: this.targetOffset.x - this.currentOffset.x, y: this.targetOffset.y - this.currentOffset.y }), this.end();
+        } else e2.offsetBy({ x: this.targetOffset.x - this.currentOffset.x, y: this.targetOffset.y - this.currentOffset.y }), this.end();
       } }, { key: "resume", value: function(t3) {
         var e2 = t3.pointer, n2 = t3.event, r2 = t3.eventTarget, i2 = this.interaction;
         i2.offsetBy({ x: -this.currentOffset.x, y: -this.currentOffset.y }), i2.updatePointer(e2, n2, r2, true), i2._doPhase({ interaction: i2, event: n2, phase: "resume" }), et(i2.coords.prev, i2.coords.cur), this.stop();
@@ -1538,14 +1435,13 @@ interact_min.exports;
       return (!e2._interacting || e2.simulation || !e2.inertia.start(n2)) && null;
     }, "interactions:down": function(t2) {
       var e2 = t2.interaction, n2 = t2.eventTarget, r2 = e2.inertia;
-      if (r2.active)
-        for (var i2 = n2; w.element(i2); ) {
-          if (i2 === e2.element) {
-            r2.resume(t2);
-            break;
-          }
-          i2 = A(i2);
+      if (r2.active) for (var i2 = n2; w.element(i2); ) {
+        if (i2 === e2.element) {
+          r2.resume(t2);
+          break;
         }
+        i2 = A(i2);
+      }
     }, "interactions:stop": function(t2) {
       var e2 = t2.interaction.inertia;
       e2.active && e2.stop();
@@ -1570,8 +1466,7 @@ interact_min.exports;
     function Be(t2, e2) {
       for (var n2 = 0; n2 < e2.length; n2++) {
         var r2 = e2[n2];
-        if (t2.immediatePropagationStopped)
-          break;
+        if (t2.immediatePropagationStopped) break;
         r2(t2);
       }
     }
@@ -1584,17 +1479,15 @@ interact_min.exports;
         (e2 = this.types[t3.type]) && Be(t3, e2), !t3.propagationStopped && n2 && (e2 = n2[t3.type]) && Be(t3, e2);
       } }, { key: "on", value: function(t3, e2) {
         var n2 = $(t3, e2);
-        for (t3 in n2)
-          this.types[t3] = gt(this.types[t3] || [], n2[t3]);
+        for (t3 in n2) this.types[t3] = gt(this.types[t3] || [], n2[t3]);
       } }, { key: "off", value: function(t3, e2) {
         var n2 = $(t3, e2);
         for (t3 in n2) {
           var r2 = this.types[t3];
-          if (r2 && r2.length)
-            for (var i2 = 0, o2 = n2[t3]; i2 < o2.length; i2++) {
-              var a2 = o2[i2], s2 = r2.indexOf(a2);
-              -1 !== s2 && r2.splice(s2, 1);
-            }
+          if (r2 && r2.length) for (var i2 = 0, o2 = n2[t3]; i2 < o2.length; i2++) {
+            var a2 = o2[i2], s2 = r2.indexOf(a2);
+            -1 !== s2 && r2.splice(s2, 1);
+          }
         }
       } }, { key: "getRect", value: function(t3) {
         return null;
@@ -1635,8 +1528,7 @@ interact_min.exports;
         h2.listeners.push({ func: o3, options: u2 });
       }, removeDelegate: function(t3, e3, n3, i3, o3) {
         var a3, u2 = Ge(o3), p2 = r2[n3], f2 = false;
-        if (!p2)
-          return;
+        if (!p2) return;
         for (a3 = p2.length - 1; a3 >= 0; a3--) {
           var d2 = p2[a3];
           if (d2.selector === t3 && d2.context === e3) {
@@ -1647,8 +1539,7 @@ interact_min.exports;
                 break;
               }
             }
-            if (f2)
-              break;
+            if (f2) break;
           }
         }
       }, delegateListener: c2, delegateUseCapture: l2, delegatedEvents: r2, documents: i2, targets: n2, supportsOptions: false, supportsPassive: false };
@@ -1667,29 +1558,26 @@ interact_min.exports;
           var a3 = yt(n2, function(e4) {
             return e4.eventTarget === t3;
           }), c3 = n2[a3];
-          if (c3 && c3.events)
-            if ("all" !== e3) {
-              var l3 = false, u2 = c3.events[e3];
-              if (u2) {
-                if ("all" === r3) {
-                  for (var p2 = u2.length - 1; p2 >= 0; p2--) {
-                    var f2 = u2[p2];
-                    s2(t3, e3, f2.func, f2.options);
-                  }
-                  return;
+          if (c3 && c3.events) if ("all" !== e3) {
+            var l3 = false, u2 = c3.events[e3];
+            if (u2) {
+              if ("all" === r3) {
+                for (var p2 = u2.length - 1; p2 >= 0; p2--) {
+                  var f2 = u2[p2];
+                  s2(t3, e3, f2.func, f2.options);
                 }
-                for (var d2 = Ge(i3), h2 = 0; h2 < u2.length; h2++) {
-                  var v2 = u2[h2];
-                  if (v2.func === r3 && Ne(v2.options, d2)) {
-                    t3.removeEventListener(e3, r3, o2.supportsOptions ? d2 : d2.capture), u2.splice(h2, 1), 0 === u2.length && (delete c3.events[e3], l3 = true);
-                    break;
-                  }
+                return;
+              }
+              for (var d2 = Ge(i3), h2 = 0; h2 < u2.length; h2++) {
+                var v2 = u2[h2];
+                if (v2.func === r3 && Ne(v2.options, d2)) {
+                  t3.removeEventListener(e3, r3, o2.supportsOptions ? d2 : d2.capture), u2.splice(h2, 1), 0 === u2.length && (delete c3.events[e3], l3 = true);
+                  break;
                 }
               }
-              l3 && !Object.keys(c3.events).length && n2.splice(a3, 1);
-            } else
-              for (e3 in c3.events)
-                c3.events.hasOwnProperty(e3) && s2(t3, e3, "all");
+            }
+            l3 && !Object.keys(c3.events).length && n2.splice(a3, 1);
+          } else for (e3 in c3.events) c3.events.hasOwnProperty(e3) && s2(t3, e3, "all");
         }
       }
       function c2(t3, e3) {
@@ -1719,51 +1607,41 @@ interact_min.exports;
     } }, He = { methodOrder: ["simulationResume", "mouseOrPen", "hasPointer", "idle"], search: function(t2) {
       for (var e2 = 0, n2 = He.methodOrder; e2 < n2.length; e2++) {
         var r2 = n2[e2], i2 = He[r2](t2);
-        if (i2)
-          return i2;
+        if (i2) return i2;
       }
       return null;
     }, simulationResume: function(t2) {
       var e2 = t2.pointerType, n2 = t2.eventType, r2 = t2.eventTarget, i2 = t2.scope;
-      if (!/down|start/i.test(n2))
-        return null;
+      if (!/down|start/i.test(n2)) return null;
       for (var o2 = 0, a2 = i2.interactions.list; o2 < a2.length; o2++) {
         var s2 = a2[o2], c2 = r2;
-        if (s2.simulation && s2.simulation.allowResume && s2.pointerType === e2)
-          for (; c2; ) {
-            if (c2 === s2.element)
-              return s2;
-            c2 = A(c2);
-          }
+        if (s2.simulation && s2.simulation.allowResume && s2.pointerType === e2) for (; c2; ) {
+          if (c2 === s2.element) return s2;
+          c2 = A(c2);
+        }
       }
       return null;
     }, mouseOrPen: function(t2) {
       var e2, n2 = t2.pointerId, r2 = t2.pointerType, i2 = t2.eventType, o2 = t2.scope;
-      if ("mouse" !== r2 && "pen" !== r2)
-        return null;
+      if ("mouse" !== r2 && "pen" !== r2) return null;
       for (var a2 = 0, s2 = o2.interactions.list; a2 < s2.length; a2++) {
         var c2 = s2[a2];
         if (c2.pointerType === r2) {
-          if (c2.simulation && !Ke(c2, n2))
-            continue;
-          if (c2.interacting())
-            return c2;
+          if (c2.simulation && !Ke(c2, n2)) continue;
+          if (c2.interacting()) return c2;
           e2 || (e2 = c2);
         }
       }
-      if (e2)
-        return e2;
+      if (e2) return e2;
       for (var l2 = 0, u2 = o2.interactions.list; l2 < u2.length; l2++) {
         var p2 = u2[l2];
-        if (!(p2.pointerType !== r2 || /down/i.test(i2) && p2.simulation))
-          return p2;
+        if (!(p2.pointerType !== r2 || /down/i.test(i2) && p2.simulation)) return p2;
       }
       return null;
     }, hasPointer: function(t2) {
       for (var e2 = t2.pointerId, n2 = 0, r2 = t2.scope.interactions.list; n2 < r2.length; n2++) {
         var i2 = r2[n2];
-        if (Ke(i2, e2))
-          return i2;
+        if (Ke(i2, e2)) return i2;
       }
       return null;
     }, idle: function(t2) {
@@ -1771,12 +1649,9 @@ interact_min.exports;
         var i2 = r2[n2];
         if (1 === i2.pointers.length) {
           var o2 = i2.interactable;
-          if (o2 && (!o2.options.gesture || !o2.options.gesture.enabled))
-            continue;
-        } else if (i2.pointers.length >= 2)
-          continue;
-        if (!i2.interacting() && e2 === i2.pointerType)
-          return i2;
+          if (o2 && (!o2.options.gesture || !o2.options.gesture.enabled)) continue;
+        } else if (i2.pointers.length >= 2) continue;
+        if (!i2.interacting() && e2 === i2.pointerType) return i2;
       }
       return null;
     } };
@@ -1798,8 +1673,7 @@ interact_min.exports;
         } else {
           var h2 = false;
           if (!I.supportsPointerEvent && /mouse/.test(n2.type)) {
-            for (var v2 = 0; v2 < r2.length && !h2; v2++)
-              h2 = "mouse" !== r2[v2].pointerType && r2[v2].pointerIsDown;
+            for (var v2 = 0; v2 < r2.length && !h2; v2++) h2 = "mouse" !== r2[v2].pointerType && r2[v2].pointerIsDown;
             h2 = h2 || e2.now() - e2.prevTouchTime < 500 || 0 === n2.timeStamp;
           }
           if (!h2) {
@@ -1819,8 +1693,7 @@ interact_min.exports;
     }
     function tn(t2, e2) {
       var n2 = t2.doc, r2 = t2.scope, i2 = t2.options, o2 = r2.interactions.docEvents, a2 = r2.events, s2 = a2[e2];
-      for (var c2 in r2.browser.isIOS && !i2.events && (i2.events = { passive: false }), a2.delegatedEvents)
-        s2(n2, c2, a2.delegateListener), s2(n2, c2, a2.delegateUseCapture, true);
+      for (var c2 in r2.browser.isIOS && !i2.events && (i2.events = { passive: false }), a2.delegatedEvents) s2(n2, c2, a2.delegateListener), s2(n2, c2, a2.delegateUseCapture, true);
       for (var l2 = i2 && i2.events, u2 = 0; u2 < o2.length; u2++) {
         var p2 = o2[u2];
         s2(n2, p2.type, p2.listener, l2);
@@ -1835,14 +1708,12 @@ interact_min.exports;
       function l2() {
         for (var e3 = 0, n3 = t2.interactions.list; e3 < n3.length; e3++) {
           var r2 = n3[e3];
-          if (r2.pointerIsDown && "touch" === r2.pointerType && !r2._interacting)
-            for (var i3 = function() {
-              var e4 = a3[o2];
-              t2.documents.some(function(t3) {
-                return M(t3.doc, e4.downTarget);
-              }) || r2.removePointer(e4.pointer, e4.event);
-            }, o2 = 0, a3 = r2.pointers; o2 < a3.length; o2++)
-              i3();
+          if (r2.pointerIsDown && "touch" === r2.pointerType && !r2._interacting) for (var i3 = function() {
+            var e4 = a3[o2];
+            t2.documents.some(function(t3) {
+              return M(t3.doc, e4.downTarget);
+            }) || r2.removePointer(e4.pointer, e4.event);
+          }, o2 = 0, a3 = r2.pointers; o2 < a3.length; o2++) i3();
         }
       }
       (a2 = k.PointerEvent ? [{ type: c2.down, listener: l2 }, { type: c2.down, listener: e2.pointerDown }, { type: c2.move, listener: e2.pointerMove }, { type: c2.up, listener: e2.pointerUp }, { type: c2.cancel, listener: e2.pointerUp }] : [{ type: "mousedown", listener: e2.pointerDown }, { type: "mousemove", listener: e2.pointerMove }, { type: "mouseup", listener: e2.pointerUp }, { type: "touchstart", listener: l2 }, { type: "touchstart", listener: e2.pointerDown }, { type: "touchmove", listener: e2.pointerMove }, { type: "touchend", listener: e2.pointerUp }, { type: "touchcancel", listener: e2.pointerUp }]).push({ type: "blur", listener: function(e3) {
@@ -1909,8 +1780,7 @@ interact_min.exports;
         }, this) : null === t3 ? (delete this.getRect, this) : this.getRect;
       } }, { key: "_backCompatOption", value: function(t3, e2) {
         if (B(e2) || w.object(e2)) {
-          for (var n2 in this.options[t3] = e2, this._actions.map)
-            this.options[n2][t3] = e2;
+          for (var n2 in this.options[t3] = e2, this._actions.map) this.options[n2][t3] = e2;
           return this;
         }
         return this.options[t3];
@@ -1954,20 +1824,15 @@ interact_min.exports;
           var r2 = n2, i2 = this._actions.methodDict[r2];
           this.options[r2] = {}, this.setPerAction(r2, V(V({}, e2.perAction), e2.actions[r2])), this[i2](t3[r2]);
         }
-        for (var o2 in t3)
-          "getRect" !== o2 ? w.func(this[o2]) && this[o2](t3[o2]) : this.rectChecker(t3.getRect);
+        for (var o2 in t3) "getRect" !== o2 ? w.func(this[o2]) && this[o2](t3[o2]) : this.rectChecker(t3.getRect);
         return this;
       } }, { key: "unset", value: function() {
-        if (w.string(this.target))
-          for (var t3 in this._scopeEvents.delegatedEvents)
-            for (var e2 = this._scopeEvents.delegatedEvents[t3], n2 = e2.length - 1; n2 >= 0; n2--) {
-              var r2 = e2[n2], i2 = r2.selector, o2 = r2.context, a2 = r2.listeners;
-              i2 === this.target && o2 === this._context && e2.splice(n2, 1);
-              for (var s2 = a2.length - 1; s2 >= 0; s2--)
-                this._scopeEvents.removeDelegate(this.target, this._context, t3, a2[s2][0], a2[s2][1]);
-            }
-        else
-          this._scopeEvents.remove(this.target, "all");
+        if (w.string(this.target)) for (var t3 in this._scopeEvents.delegatedEvents) for (var e2 = this._scopeEvents.delegatedEvents[t3], n2 = e2.length - 1; n2 >= 0; n2--) {
+          var r2 = e2[n2], i2 = r2.selector, o2 = r2.context, a2 = r2.listeners;
+          i2 === this.target && o2 === this._context && e2.splice(n2, 1);
+          for (var s2 = a2.length - 1; s2 >= 0; s2--) this._scopeEvents.removeDelegate(this.target, this._context, t3, a2[s2][0], a2[s2][1]);
+        }
+        else this._scopeEvents.remove(this.target, "all");
       } }]), t2;
     }(), an = function() {
       function t2(e2) {
@@ -1985,15 +1850,13 @@ interact_min.exports;
         return this.scope.addDocument(n2._doc), this.list.push(n2), w.string(t3) ? (this.selectorMap[t3] || (this.selectorMap[t3] = []), this.selectorMap[t3].push(n2)) : (n2.target[this.scope.id] || Object.defineProperty(t3, this.scope.id, { value: [], configurable: true }), t3[this.scope.id].push(n2)), this.scope.fire("interactable:new", { target: t3, options: e2, interactable: n2, win: this.scope._win }), n2;
       } }, { key: "getExisting", value: function(t3, e2) {
         var n2 = e2 && e2.context || this.scope.document, r2 = w.string(t3), i2 = r2 ? this.selectorMap[t3] : t3[this.scope.id];
-        if (i2)
-          return bt(i2, function(e3) {
-            return e3._context === n2 && (r2 || e3.inContext(t3));
-          });
+        if (i2) return bt(i2, function(e3) {
+          return e3._context === n2 && (r2 || e3.inContext(t3));
+        });
       } }, { key: "forEachMatch", value: function(t3, e2) {
         for (var n2 = 0, r2 = this.list; n2 < r2.length; n2++) {
           var i2 = r2[n2], o2 = void 0;
-          if ((w.string(i2.target) ? w.element(t3) && R(t3, i2.target) : t3 === i2.target) && i2.inContext(t3) && (o2 = e2(i2)), void 0 !== o2)
-            return o2;
+          if ((w.string(i2.target) ? w.element(t3) && R(t3, i2.target) : t3 === i2.target) && i2.inContext(t3) && (o2 = e2(i2)), void 0 !== o2) return o2;
         }
       } }]), t2;
     }();
@@ -2005,7 +1868,7 @@ interact_min.exports;
             var i2 = t3.interactables.getExisting(n3, r2);
             return i2 || ((i2 = t3.interactables.new(n3, r2)).events.global = e4.globalEvents), i2;
           };
-          return e3.getPointerAverage = lt, e3.getTouchBBox = ut, e3.getTouchDistance = pt, e3.getTouchAngle = ft, e3.getElementRect = L, e3.getElementClientRect = Y, e3.matchesSelector = R, e3.closest = z, e3.globalEvents = {}, e3.version = "1.10.26", e3.scope = t3, e3.use = function(t4, e4) {
+          return e3.getPointerAverage = lt, e3.getTouchBBox = ut, e3.getTouchDistance = pt, e3.getTouchAngle = ft, e3.getElementRect = L, e3.getElementClientRect = Y, e3.matchesSelector = R, e3.closest = z, e3.globalEvents = {}, e3.version = "1.10.27", e3.scope = t3, e3.use = function(t4, e4) {
             return this.scope.usePlugin(t4, e4), this;
           }, e3.isSet = function(t4, e4) {
             return !!this.scope.interactables.get(t4, e4 && e4.context);
@@ -2018,8 +1881,7 @@ interact_min.exports;
               return this;
             }
             if (w.object(t4)) {
-              for (var a2 in t4)
-                this.on(a2, t4[a2], e4);
+              for (var a2 in t4) this.on(a2, t4[a2], e4);
               return this;
             }
             return ve(t4, this.scope.actions) ? this.globalEvents[t4] ? this.globalEvents[t4].push(e4) : this.globalEvents[t4] = [e4] : this.scope.events.add(this.scope.document, t4, e4, { options: n3 }), this;
@@ -2032,8 +1894,7 @@ interact_min.exports;
               return this;
             }
             if (w.object(t4)) {
-              for (var a2 in t4)
-                this.off(a2, t4[a2], e4);
+              for (var a2 in t4) this.off(a2, t4[a2], e4);
               return this;
             }
             var s2;
@@ -2045,8 +1906,7 @@ interact_min.exports;
           }, e3.supportsPointerEvent = function() {
             return I.supportsPointerEvent;
           }, e3.stop = function() {
-            for (var t4 = 0, e4 = this.scope.interactions.list; t4 < e4.length; t4++)
-              e4[t4].stop();
+            for (var t4 = 0, e4 = this.scope.interactions.list; t4 < e4.length; t4++) e4[t4].stop();
             return this;
           }, e3.pointerMoveTolerance = function(t4) {
             return w.number(t4) ? (this.scope.interactions.pointerMoveTolerance = t4, this) : this.scope.interactions.pointerMoveTolerance;
@@ -2081,8 +1941,7 @@ interact_min.exports;
       } }, { key: "fire", value: function(t3, e2) {
         for (var n2 = 0, r2 = this.listenerMaps; n2 < r2.length; n2++) {
           var i2 = r2[n2].map[t3];
-          if (i2 && false === i2(e2, this, t3))
-            return false;
+          if (i2 && false === i2(e2, this, t3)) return false;
         }
       } }, { key: "init", value: function(t3) {
         return this.isInitialized ? this : function(t4, e2) {
@@ -2093,34 +1952,27 @@ interact_min.exports;
         var e2 = t3.id;
         return e2 ? !!this._plugins.map[e2] : -1 !== this._plugins.list.indexOf(t3);
       } }, { key: "usePlugin", value: function(t3, e2) {
-        if (!this.isInitialized)
-          return this;
-        if (this.pluginIsInstalled(t3))
-          return this;
+        if (!this.isInitialized) return this;
+        if (this.pluginIsInstalled(t3)) return this;
         if (t3.id && (this._plugins.map[t3.id] = t3), this._plugins.list.push(t3), t3.install && t3.install(this, e2), t3.listeners && t3.before) {
           for (var n2 = 0, r2 = this.listenerMaps.length, i2 = t3.before.reduce(function(t4, e3) {
             return t4[e3] = true, t4[cn(e3)] = true, t4;
           }, {}); n2 < r2; n2++) {
             var o2 = this.listenerMaps[n2].id;
-            if (o2 && (i2[o2] || i2[cn(o2)]))
-              break;
+            if (o2 && (i2[o2] || i2[cn(o2)])) break;
           }
           this.listenerMaps.splice(n2, 0, { id: t3.id, map: t3.listeners });
-        } else
-          t3.listeners && this.listenerMaps.push({ id: t3.id, map: t3.listeners });
+        } else t3.listeners && this.listenerMaps.push({ id: t3.id, map: t3.listeners });
         return this;
       } }, { key: "addDocument", value: function(t3, e2) {
-        if (-1 !== this.getDocIndex(t3))
-          return false;
+        if (-1 !== this.getDocIndex(t3)) return false;
         var n2 = y(t3);
         e2 = e2 ? V({}, e2) : {}, this.documents.push({ doc: t3, options: e2 }), this.events.documents.push(t3), t3 !== this.document && this.events.add(n2, "unload", this.onWindowUnload), this.fire("scope:add-document", { doc: t3, window: n2, scope: this, options: e2 });
       } }, { key: "removeDocument", value: function(t3) {
         var e2 = this.getDocIndex(t3), n2 = y(t3), r2 = this.documents[e2].options;
         this.events.remove(n2, "unload", this.onWindowUnload), this.documents.splice(e2, 1), this.events.documents.splice(e2, 1), this.fire("scope:remove-document", { doc: t3, window: n2, scope: this, options: r2 });
       } }, { key: "getDocIndex", value: function(t3) {
-        for (var e2 = 0; e2 < this.documents.length; e2++)
-          if (this.documents[e2].doc === t3)
-            return e2;
+        for (var e2 = 0; e2 < this.documents.length; e2++) if (this.documents[e2].doc === t3) return e2;
         return -1;
       } }, { key: "getDocOptions", value: function(t3) {
         var e2 = this.getDocIndex(t3);
@@ -2158,16 +2010,14 @@ interact_min.exports;
       if (n2.xIsPrimaryAxis = !(!i2.left && !i2.right), n2.equalDelta) {
         var d2 = (f2.left ? 1 : -1) * (f2.top ? 1 : -1);
         n2.edgeSign = { x: d2, y: d2 };
-      } else
-        n2.edgeSign = { x: f2.left ? -1 : 1, y: f2.top ? -1 : 1 };
+      } else n2.edgeSign = { x: f2.left ? -1 : 1, y: f2.top ? -1 : 1 };
       if (false !== c2 && V(i2, f2), null != p2 && p2.length) {
         var h2 = new me(t2.interaction);
         h2.copyFrom(t2.interaction.modification), h2.prepareStates(p2), n2.subModification = h2, h2.startAll(e({}, t2));
       }
     }, set: function(t2) {
       var n2 = t2.state, r2 = t2.rect, i2 = t2.coords, o2 = n2.linkedEdges, a2 = V({}, i2), s2 = n2.equalDelta ? gn : mn;
-      if (V(t2.edges, o2), s2(n2, n2.xIsPrimaryAxis, i2, r2), !n2.subModification)
-        return null;
+      if (V(t2.edges, o2), s2(n2, n2.xIsPrimaryAxis, i2, r2), !n2.subModification) return null;
       var c2 = V({}, r2);
       H(o2, c2, { x: i2.x - a2.x, y: i2.y - a2.y });
       var l2 = n2.subModification.setAll(e(e({}, t2), {}, { rect: c2, edges: o2, pageCoords: i2, prevCoords: i2, prevRect: c2 })), u2 = l2.delta;
@@ -2249,8 +2099,7 @@ interact_min.exports;
         var e3 = t3.interaction.element, n3 = N(G(t3.state.options.origin, null, null, [e3])), r3 = n3 || K(t3.interactable, e3, t3.interaction.prepared.name);
         return r3;
       }(t2) : { x: 0, y: 0 };
-      if ("startCoords" === c2.offset)
-        e2 = { x: n2.coords.start.page.x, y: n2.coords.start.page.y };
+      if ("startCoords" === c2.offset) e2 = { x: n2.coords.start.page.x, y: n2.coords.start.page.y };
       else {
         var u2 = G(c2.offset, r2, i2, [n2]);
         (e2 = N(u2) || { x: 0, y: 0 }).x += l2.x, e2.y += l2.y;
@@ -2262,11 +2111,10 @@ interact_min.exports;
     }, set: function(t2) {
       var e2 = t2.interaction, n2 = t2.coords, r2 = t2.state, i2 = r2.options, o2 = r2.offsets, a2 = K(e2.interactable, e2.element, e2.prepared.name), s2 = V({}, n2), c2 = [];
       i2.offsetWithOrigin || (s2.x -= a2.x, s2.y -= a2.y);
-      for (var l2 = 0, u2 = o2; l2 < u2.length; l2++)
-        for (var p2 = u2[l2], f2 = s2.x - p2.x, d2 = s2.y - p2.y, h2 = 0, v2 = i2.targets.length; h2 < v2; h2++) {
-          var g2 = i2.targets[h2], m2 = void 0;
-          (m2 = w.func(g2) ? g2(f2, d2, e2._proxy, p2, h2) : g2) && c2.push({ x: (w.number(m2.x) ? m2.x : f2) + p2.x, y: (w.number(m2.y) ? m2.y : d2) + p2.y, range: w.number(m2.range) ? m2.range : i2.range, source: g2, index: h2, offset: p2 });
-        }
+      for (var l2 = 0, u2 = o2; l2 < u2.length; l2++) for (var p2 = u2[l2], f2 = s2.x - p2.x, d2 = s2.y - p2.y, h2 = 0, v2 = i2.targets.length; h2 < v2; h2++) {
+        var g2 = i2.targets[h2], m2 = void 0;
+        (m2 = w.func(g2) ? g2(f2, d2, e2._proxy, p2, h2) : g2) && c2.push({ x: (w.number(m2.x) ? m2.x : f2) + p2.x, y: (w.number(m2.y) ? m2.y : d2) + p2.y, range: w.number(m2.range) ? m2.range : i2.range, source: g2, index: h2, offset: p2 });
+      }
       for (var y2 = { target: null, inRange: false, distance: 0, range: 0, delta: { x: 0, y: 0 } }, b2 = 0; b2 < c2.length; b2++) {
         var x2 = c2[b2], E2 = x2.range, T2 = x2.x - s2.x, S2 = x2.y - s2.y, _2 = Q(T2, S2), P2 = _2 <= E2;
         E2 === 1 / 0 && y2.inRange && y2.range !== 1 / 0 && (P2 = false), y2.target && !(P2 ? y2.inRange && E2 !== 1 / 0 ? _2 / E2 < y2.distance / y2.range : E2 === 1 / 0 && y2.range !== 1 / 0 || _2 < y2.distance : !y2.inRange && _2 < y2.distance) || (y2.target = x2, y2.distance = _2, y2.range = E2, y2.inRange = P2, y2.delta.x = T2, y2.delta.y = S2);
@@ -2275,8 +2123,7 @@ interact_min.exports;
     }, defaults: { range: 1 / 0, targets: null, offset: null, offsetWithOrigin: true, origin: null, relativePoints: null, endOnly: false, enabled: false } }, Cn = be(Rn, "snap");
     var jn = { start: function(t2) {
       var e2 = t2.state, n2 = t2.edges, r2 = e2.options;
-      if (!n2)
-        return null;
+      if (!n2) return null;
       t2.state = { options: { targets: null, relativePoints: [{ x: n2.left ? 0 : 1, y: n2.top ? 0 : 1 }], offset: r2.offset || "self", origin: { x: 0, y: 0 }, range: r2.range } }, e2.targetFields = e2.targetFields || [["width", "height"], ["x", "y"]], Rn.start(t2), e2.offsets = t2.state.offsets, t2.state = e2;
     }, set: function(t2) {
       var e2 = t2.interaction, n2 = t2.state, r2 = t2.coords, i2 = n2.options, o2 = n2.offsets, a2 = { x: r2.x - o2[0].x, y: r2.y - o2[0].y };
@@ -2316,8 +2163,7 @@ interact_min.exports;
           l2.dt = l2.timeStamp - s2.pointers[p2].downTime;
           var f2 = l2.timeStamp - s2.tapTime;
           l2.double = !!s2.prevTap && "doubletap" !== s2.prevTap.type && s2.prevTap.target === l2.target && f2 < 500;
-        } else
-          "doubletap" === t3 && (l2.dt = i2.timeStamp - s2.tapTime, l2.double = true);
+        } else "doubletap" === t3 && (l2.dt = i2.timeStamp - s2.tapTime, l2.double = true);
         return l2;
       }
       return o(n2, [{ key: "_subtractOrigin", value: function(t3) {
@@ -2336,8 +2182,7 @@ interact_min.exports;
       e2.prevTap = null, e2.tapTime = 0;
     }, "interactions:update-pointer": function(t2) {
       var e2 = t2.down, n2 = t2.pointerInfo;
-      if (!e2 && n2.hold)
-        return;
+      if (!e2 && n2.hold) return;
       n2.hold = { duration: 1 / 0, timeout: null };
     }, "interactions:move": function(t2, e2) {
       var n2 = t2.interaction, r2 = t2.pointer, i2 = t2.event, o2 = t2.eventTarget;
@@ -2348,8 +2193,7 @@ interact_min.exports;
           var p2 = c2[u2];
           l2.node = p2, e3.fire("pointerEvents:collect-targets", l2);
         }
-        if (!l2.targets.length)
-          return;
+        if (!l2.targets.length) return;
         for (var f2 = 1 / 0, d2 = 0, h2 = l2.targets; d2 < h2.length; d2++) {
           var v2 = h2[d2].eventable.options.holdDuration;
           v2 < f2 && (f2 = v2);
@@ -2371,11 +2215,9 @@ interact_min.exports;
       e2.fire("pointerEvents:new", { pointerEvent: l2 });
       for (var u2 = { interaction: n2, pointer: r2, event: i2, eventTarget: o2, targets: c2, type: a2, pointerEvent: l2 }, p2 = 0; p2 < c2.length; p2++) {
         var f2 = c2[p2];
-        for (var d2 in f2.props || {})
-          l2[d2] = f2.props[d2];
+        for (var d2 in f2.props || {}) l2[d2] = f2.props[d2];
         var h2 = K(f2.eventable, f2.node);
-        if (l2._subtractOrigin(h2), l2.eventable = f2.eventable, l2.currentTarget = f2.node, f2.eventable.fire(l2), l2._addOrigin(h2), l2.immediatePropagationStopped || l2.propagationStopped && p2 + 1 < c2.length && c2[p2 + 1].node !== l2.currentTarget)
-          break;
+        if (l2._subtractOrigin(h2), l2.eventable = f2.eventable, l2.currentTarget = f2.node, f2.eventable.fire(l2), l2._addOrigin(h2), l2.immediatePropagationStopped || l2.propagationStopped && p2 + 1 < c2.length && c2[p2 + 1].node !== l2.currentTarget) break;
       }
       if (e2.fire("pointerEvents:fired", u2), "tap" === a2) {
         var v2 = l2.double ? Vn({ interaction: n2, pointer: r2, event: i2, eventTarget: o2, type: "doubletap" }, e2) : l2;
@@ -2385,8 +2227,7 @@ interact_min.exports;
     }
     function Wn(t2, e2) {
       var n2 = t2.interaction, r2 = t2.pointer, i2 = t2.event, o2 = t2.eventTarget, a2 = t2.type, s2 = n2.getPointerIndex(r2), c2 = n2.pointers[s2];
-      if ("tap" === a2 && (n2.pointerWasMoved || !c2 || c2.downTarget !== o2))
-        return [];
+      if ("tap" === a2 && (n2.pointerWasMoved || !c2 || c2.downTarget !== o2)) return [];
       for (var l2 = q(o2), u2 = { interaction: n2, pointer: r2, event: i2, eventTarget: o2, type: a2, path: l2, targets: [], node: null }, p2 = 0; p2 < l2.length; p2++) {
         var f2 = l2[p2];
         u2.node = f2, e2.fire("pointerEvents:collect-targets", u2);
@@ -2456,15 +2297,13 @@ interact_min.exports;
         return function(t3, e4, n2) {
           for (var r2 = t3.getAllElements(), i2 = n2.window.Promise, o2 = i2 ? [] : null, a2 = function() {
             var a3 = r2[s2], c2 = t3.getRect(a3);
-            if (!c2)
-              return 1;
+            if (!c2) return 1;
             var l2, u2 = bt(n2.interactions.list, function(n3) {
               return n3.interacting() && n3.interactable === t3 && n3.element === a3 && n3.prepared.name === e4.name;
             });
-            if (u2)
-              u2.move(), o2 && (l2 = u2._reflowPromise || new i2(function(t4) {
-                u2._reflowResolve = t4;
-              }));
+            if (u2) u2.move(), o2 && (l2 = u2._reflowPromise || new i2(function(t4) {
+              u2._reflowResolve = t4;
+            }));
             else {
               var p2 = U(c2), f2 = /* @__PURE__ */ function(t4) {
                 return { coords: t4, get page() {
@@ -2505,8 +2344,7 @@ interact_min.exports;
               }(n2, t3, a3, e4, f2);
             }
             o2 && o2.push(l2);
-          }, s2 = 0; s2 < r2.length && !a2(); s2++)
-            ;
+          }, s2 = 0; s2 < r2.length && !a2(); s2++) ;
           return o2 && i2.all(o2).then(function() {
             return t3;
           });
@@ -2518,11 +2356,10 @@ interact_min.exports;
         t3.splice(t3.indexOf(e3), 1);
       }(e2.interactions.list, n2));
     } } }, er = tr;
-    if (un.use(he), un.use(Ce), un.use(Zn), un.use(qe), un.use(Ln), un.use(pe), un.use(Xt), un.use(Gt), un.use(er), un.default = un, "object" === n(module) && module)
-      try {
-        module.exports = un;
-      } catch (t2) {
-      }
+    if (un.use(he), un.use(Ce), un.use(Zn), un.use(qe), un.use(Ln), un.use(pe), un.use(Xt), un.use(Gt), un.use(er), un.default = un, "object" === n(module) && module) try {
+      module.exports = un;
+    } catch (t2) {
+    }
     return un.default = un, un;
   });
 })(interact_min, interact_min.exports);
